@@ -2,7 +2,7 @@ const mongoose = require('../libs/Mongoose');
 const Schema = mongoose.Schema;
 const MessageSchema = new mongoose.Schema(
    {
-      user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+      user: [{ type: Schema.Types.ObjectId, ref: 'User ' }],
       message: String,
    },
    {
