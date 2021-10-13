@@ -12,6 +12,12 @@ const Container = styled.div`
   flex-direction: column;
   background: #212121;
 
+  @media (max-width: 1202px) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   @media (max-width: 600px) {
     width: 100%;
     display: ${props => (props.openChatMessage ? 'flex' : 'none')};

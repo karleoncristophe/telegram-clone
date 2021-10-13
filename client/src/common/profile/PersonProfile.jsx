@@ -7,12 +7,17 @@ import ImgInformation from '../../assets/icons/information.png';
 import PersonUser from '../../assets/icons/personUser.png';
 
 const Container = styled.div`
-  position: relative;
   height: 100%;
   width: 420px;
   display: flex;
   flex-direction: column;
   background: #212121;
+
+  @media (max-width: 1202px) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
 
   @media (max-width: 600px) {
     width: 100%;
