@@ -265,7 +265,7 @@ const MyProfile = ({ settings, openEdit }) => {
     };
     fetchRepos();
     return () => {
-      setState({}); // This worked for me
+      setState({}); // update an unmounted component
     };
     // eslint-disable-next-line
   }, [user]);
