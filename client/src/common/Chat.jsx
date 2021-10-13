@@ -633,15 +633,6 @@ const Chat = ({ openChatMessage, closeChat }) => {
     // eslint-disable-next-line
   }, [socket]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const data = await fetch('http://localhost:4000/users');
-      const users = await data.json();
-      setMessages(users);
-    };
-    getData();
-  }, []);
-
   // useEffect(() => {
   //    setInterval(() => {
   //       getData();
