@@ -229,7 +229,8 @@ const ProfileAvatar = styled.div`
 const MyProfile = ({ settings, openEdit }) => {
   const [user, setUser] = useState();
   const [visible, setVisible] = useState(false);
-
+  // eslint-disable-next-line
+  const [state, setState] = useState({});
   const modalVisible = () => {
     setVisible(true);
   };
@@ -263,6 +264,9 @@ const MyProfile = ({ settings, openEdit }) => {
       }
     };
     fetchRepos();
+    return () => {
+      setState({}); // This worked for me
+    };
     // eslint-disable-next-line
   }, [user]);
 

@@ -431,7 +431,6 @@ const EditProfile = ({ openEdit }) => {
       console.log(data);
       setGetImage(data);
     };
-
     getImage();
   }, []);
 
