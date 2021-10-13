@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { Avatar, Menu, Dropdown } from 'antd';
 import MenuOption from '../assets/icons/menu.png';
-import SearchImg from '../assets/icons/search.svg';
-import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 import ViewImg from '../assets/icons/viewblack.png';
 import SearchChat from '../common/search/SearchChat';
 import EditProfile from '../common/profile/EditProfile';
@@ -366,10 +364,7 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
 
                   <SearchButton onClick={openSearch}>
                     <ImageSearchContent>
-                      {search.length === 0 && <ImageSearch src={SearchImg} />}
-                      {search.length !== 0 && (
-                        <ImageSearch src={SearchPurpleImg} />
-                      )}
+                      <ImageSearch />
                     </ImageSearchContent>
                     <SearchInput
                       placeholder="Search"

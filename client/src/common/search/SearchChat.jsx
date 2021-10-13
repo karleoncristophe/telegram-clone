@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import LeftArrowImg from '../../assets/icons/left-arrow.png';
-import SearchPurpleImg from '../../assets/icons/searchpurple.svg';
 import { Avatar } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
@@ -83,6 +82,7 @@ const ImageSearchContent = styled.div`
 const ImageSearch = styled(SearchOutlined)`
   display: flex;
   font-size: 20px;
+
   color: #8774e1;
 `;
 
@@ -97,7 +97,14 @@ const SearchInput = styled.input`
   width: 100%;
 
   &&::placeholder {
-    color: #8774e1;
+    color: #707579;
+
+    &:hover {
+      color: #8774e1;
+    }
+    &:focus {
+      color: #8774e1;
+    }
   }
 `;
 
@@ -247,7 +254,7 @@ const SearchChat = ({ closeSearch }) => {
 
           <SearchButton>
             <ImageSearchContent>
-              <ImageSearch src={SearchPurpleImg} />
+              <ImageSearch />
             </ImageSearchContent>
             <SearchInput autoFocus onChange={onChange} placeholder="Search" />
           </SearchButton>

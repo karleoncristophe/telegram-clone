@@ -5,7 +5,6 @@ import io from 'socket.io-client';
 import styled from 'styled-components';
 import Picker from 'emoji-picker-react';
 import TrashImg from '../assets/icons/trash.svg';
-import ImgSearch from '../assets/icons/search.svg';
 import ImgMenu from '../assets/icons/anothermenu.png';
 import ImgEmoji from '../assets/icons/emoji.png';
 
@@ -666,7 +665,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                   onClick={openMessageFinder}
                   disabled={openProfileInformation === true}
                 >
-                  <ImageSearch src={ImgSearch} />
+                  <ImageSearch />
                 </SearchMessageButton>
                 <Dropdown
                   overlay={deleteChat}

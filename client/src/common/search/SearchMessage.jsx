@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-
+import { SearchOutlined } from '@ant-design/icons';
 import LeftArrowImg from '../../assets/icons/left-arrow.png';
-import SearchImg from '../../assets/icons/search.svg';
-import SearchPurpleImg from '../../assets/icons/searchpurple.svg';
 
 const Container = styled.div`
   height: 100%;
@@ -103,19 +101,12 @@ const SearchContent = styled.button`
   display: flex;
   align-items: center;
   border-radius: 20px;
-  border: 1px solid #2f2f2f;
+  border: 2px solid #8774e1;
 
   background: #181818;
   height: 42px;
   width: 90%;
   margin-left: 5px;
-  &:hover {
-    border: 1px solid #8774e1;
-  }
-
-  &:focus {
-    border: 1px solid #8774e1;
-  }
 
   @media (max-width: 1202px) {
     height: 2.3rem;
@@ -133,9 +124,10 @@ const ImageSearchContent = styled.div`
   width: 44px;
 `;
 
-const ImageSearch = styled.img`
+const ImageSearch = styled(SearchOutlined)`
   display: flex;
-  height: 1.43rem;
+  font-size: 20px;
+  color: #8774e1;
 `;
 
 const SearchInput = styled.input`
@@ -271,10 +263,7 @@ const SearchMessage = ({ close, openChatMessage }) => {
           </LeftArowButton>
           <SearchContent>
             <ImageSearchContent>
-              {messageSearch.length === 0 && <ImageSearch src={SearchImg} />}
-              {messageSearch.length !== 0 && (
-                <ImageSearch src={SearchPurpleImg} />
-              )}
+              <ImageSearch />
             </ImageSearchContent>
             <SearchInput
               autoFocus
