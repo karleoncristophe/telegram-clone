@@ -154,11 +154,16 @@ const ChooseImage = styled.label`
 `;
 
 const Camera = styled(CameraOutlined)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 45px;
+  height: 100%;
+  width: 100%;
   transition: 0.8s;
   color: #fff;
   &&:hover {
-    font-size: 45px;
+    font-size: 55px;
   }
 `;
 
@@ -346,7 +351,6 @@ const Image = styled.div`
   border: none;
   width: 100%;
   height: 100%;
-  background-size: cover;
 `;
 
 const EditProfile = ({ openEdit }) => {
@@ -462,7 +466,12 @@ const EditProfile = ({ openEdit }) => {
           <AvatarContent>
             <ProfileAvatarEdit>
               <ChooseImageContent onSubmit={uploadImage}>
-                <Image style={{ background: `url(${getImage?._id})` }}>
+                <Image
+                  style={{
+                    background: `url(https://static.remove.bg/remove-bg-web/94d2aee5eb04f99c74eb8c98ee22ef29d449bc28/assets/start-1abfb4fe2980eabfbbaaa4365a0692539f7cd2725f324f904565a9a744f8e214.jpg)`,
+                    backgroundSize: 'cover',
+                  }}
+                >
                   <ChooseImageInput
                     type="file"
                     id="img"
