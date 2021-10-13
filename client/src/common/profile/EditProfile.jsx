@@ -363,6 +363,7 @@ const EditProfile = ({ openEdit }) => {
   const uploadImage = async e => {
     e.preventDefault();
     openEdit();
+
     const formData = new FormData();
     formData.append('file', image);
     try {
@@ -435,8 +436,15 @@ const EditProfile = ({ openEdit }) => {
   }, []);
 
   useEffect(() => {
-    setImage(image);
-    // eslint-disable-next-line
+    const fetchRepos = async () => {
+      try {
+        const { data } = await api.get('me');
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRepos();
   }, []);
 
   return (

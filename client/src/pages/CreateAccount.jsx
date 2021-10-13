@@ -275,6 +275,8 @@ const defaultLocation = {
 };
 
 const CreateAccount = ({ type, color }) => {
+  // eslint-disable-next-line
+  const [state, setState] = useState({});
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState('');
   const [username, setUsername] = useState('');
@@ -315,16 +317,6 @@ const CreateAccount = ({ type, color }) => {
   };
 
   useEffect(() => {
-    const getUser = async () => {
-      const data = await fetch('http://localhost:4000/users');
-      const username = await data.json();
-      setUsers(username);
-    };
-
-    getUser();
-  }, []);
-
-  useEffect(() => {
     const fetchRepos = async () => {
       try {
         const { data } = await api.get('users');
@@ -334,6 +326,9 @@ const CreateAccount = ({ type, color }) => {
       }
     };
     fetchRepos();
+    return () => {
+      setState({}); // update an unmounted component
+    };
     // eslint-disable-next-line
   }, []);
 

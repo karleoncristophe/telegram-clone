@@ -220,6 +220,8 @@ const Input = styled.input`
 
 const LogIn = () => {
   // eslint-disable-next-line
+  const [state, setState] = useState({});
+  // eslint-disable-next-line
   const [users, setUsers] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -265,6 +267,9 @@ const LogIn = () => {
       }
     };
     fetchRepos();
+    return () => {
+      setState({}); // update an unmounted component
+    };
     // eslint-disable-next-line
   }, []);
 
