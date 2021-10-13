@@ -652,7 +652,10 @@ const Chat = ({ openChatMessage, closeChat }) => {
                 <LeftArowButton>
                   <LeftArowImage src={LeftArrowImg} onClick={closeChat} />
                 </LeftArowButton>
-                <ProfileContentButton onClick={openProfile}>
+                <ProfileContentButton
+                  onClick={openProfile}
+                  disabled={openSearch === true}
+                >
                   <ProfileAvatar src={ChatImage} />
                 </ProfileContentButton>
                 <ProfileInformationContent>
@@ -696,7 +699,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                       data={data}
                       user={nick}
                       openProfile={openProfile}
-                      openMessageFinder={openMessageFinder}
+                      openSearch={openSearch}
                       remove={remove}
                     />
                   ))}

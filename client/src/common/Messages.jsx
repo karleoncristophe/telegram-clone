@@ -142,7 +142,7 @@ const DeleteMessageButton = styled(Menu.Item)`
   }
 `;
 
-const Messages = ({ data, user, openProfile, openMessageFinder, remove }) => {
+const Messages = ({ data, openSearch, user, openProfile, remove }) => {
   const isDay = dayjs(data.createdAt).isBefore(
     dayjs(dayjs().format('YYYY-MM-DD'))
   );
@@ -174,7 +174,7 @@ const Messages = ({ data, user, openProfile, openMessageFinder, remove }) => {
           {data.user === user ? null : (
             <ProfileAvatarButton
               onClick={openProfile}
-              disabled={openMessageFinder === true}
+              disabled={openSearch === true}
             />
           )}
           <Coner
