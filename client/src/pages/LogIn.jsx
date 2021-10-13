@@ -292,6 +292,8 @@ const LogIn = () => {
 
           <Input
             type="password"
+            name="password"
+            autoComplete="on"
             value={password}
             placeholder="Write your password"
             onChange={e => setPassword(e.target.value)}

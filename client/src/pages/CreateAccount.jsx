@@ -382,6 +382,8 @@ const CreateAccount = ({ type, color }) => {
             <InputPasswordTitle>Password</InputPasswordTitle>
             <Input
               type="password"
+              name="password"
+              autoComplete="on"
               value={password}
               placeholder="Choose a password"
               onChange={e => setPassword(e.target.value)}
