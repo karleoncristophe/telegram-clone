@@ -32,9 +32,7 @@ const Container = styled.div`
   border: 1px solid #000000;
   border-top: none;
   width: 65%;
-
   position: relative;
-
   background: #0e0d0d;
 
   @media (max-width: 1202px) {
@@ -43,7 +41,6 @@ const Container = styled.div`
 
   @media (max-width: 911px) {
     width: 100%;
-    /* overflow-y: hidden; */
     display: ${props => (props.openChatMessage ? 'flex' : 'none')};
   }
 `;
@@ -63,7 +60,6 @@ const ChatContent = styled.div`
 
 const ChatBackground = styled.div`
   display: flex;
-
   align-items: center;
   background: #0e0d0d;
   background-size: cover;
@@ -84,7 +80,7 @@ const Header = styled.header`
 const ProfileContent = styled.div`
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
 `;
 
 const ProfileContentButton = styled.button`
@@ -193,7 +189,6 @@ const MainScrollContent = styled.main`
   width: 100%;
   overflow-x: scroll;
   scroll-snap-type: y mandatory;
-  margin: auto;
 
   ::-webkit-scrollbar {
     width: 7px;
@@ -212,7 +207,6 @@ const MainScrollContent = styled.main`
 
   @media (width: 952px) {
     width: 100%;
-    margin: auto;
     align-items: center;
 
     ::-webkit-scrollbar {
@@ -253,7 +247,7 @@ const ViewMessages = styled.div`
 
   @media (max-width: 1202px) {
     display: flex;
-    width: 97%;
+    width: 98%;
   }
 `;
 
@@ -300,11 +294,10 @@ const SendMessageContent = styled.div`
   display: flex;
   align-items: center;
   border-radius: 13px 13px 13px 13px;
-
   background: #212121;
-
   height: 100%;
   width: 48%;
+
   @media (max-width: 1202px) {
     width: 98%;
   }
@@ -679,7 +672,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                   style={{
                     width:
                       openProfileInformation || openSearch
-                        ? '90%'
+                        ? '98%'
                         : '54%' < '98%',
                     transition:
                       openProfileInformation || openSearch ? '0s' : '0.2s',
@@ -704,7 +697,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                     style={{
                       width:
                         openProfileInformation || openSearch
-                          ? '82%'
+                          ? '98%'
                           : '56%' > '98%',
                       transition:
                         openProfileInformation || openSearch ? '0s' : '0.2s',

@@ -9,11 +9,10 @@ const Container = styled.div`
   width: 420px;
   display: flex;
   flex-direction: column;
-  background: #212121;
 
   @media (max-width: 1202px) {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 0;
   }
 
