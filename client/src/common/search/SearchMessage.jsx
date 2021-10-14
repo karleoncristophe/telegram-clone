@@ -29,7 +29,6 @@ const ContainerScroll = styled.div`
   display: flex;
   flex-direction: column;
   background: #212121;
-
   overflow-y: scroll;
   overflow-x: hidden;
 
