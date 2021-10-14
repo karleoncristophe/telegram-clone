@@ -256,9 +256,6 @@ const ViewMessages = styled.div`
   flex-direction: column;
   scroll-snap-align: end;
 
-  /* //rotação para o scroll começar no fim da div
-   transform: rotateX(180deg); */
-
   @media (max-width: 1202px) {
     display: flex;
     width: 97%;
