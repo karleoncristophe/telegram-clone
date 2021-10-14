@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
 import LeftArrowImg from '../../assets/icons/left-arrow.png';
+import api from '../../services/api';
 
 const Container = styled.div`
   height: 100%;
@@ -244,8 +245,7 @@ const SearchMessage = ({ close, openChatMessage }) => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const reponse = await fetch('http://localhost/messages');
-        const data = await reponse.json();
+        const { data } = await api.get('messages');
         setMessages(data);
       } catch (error) {
         console.log(error);
