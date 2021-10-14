@@ -222,7 +222,7 @@ const MainScrollContent = styled.main`
     }
 
     ::-webkit-scrollbar-track {
-      background: transparent; /* color of the tracking area */
+      background: transparent;
     }
 
     ::-webkit-scrollbar-transform {
