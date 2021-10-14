@@ -188,17 +188,12 @@ const SearchMessageButton = styled.button`
 const MainScrollContent = styled.main`
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-end; */
   align-items: center;
   flex: 1;
   width: 100%;
   overflow-x: scroll;
   scroll-snap-type: y mandatory;
   margin: auto;
-
-  /* //rotação para o scroll começar no fim da div
-   transform: rotateX(180deg);
-   overflow-x: auto; */
 
   ::-webkit-scrollbar {
     width: 7px;
@@ -207,7 +202,7 @@ const MainScrollContent = styled.main`
   }
 
   ::-webkit-scrollbar-track {
-    background: transparent; /* color of the tracking area */
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -227,7 +222,7 @@ const MainScrollContent = styled.main`
     }
 
     ::-webkit-scrollbar-track {
-      background: transparent; /* color of the tracking area */
+      background: transparent;
     }
 
     ::-webkit-scrollbar-transform {
@@ -243,7 +238,7 @@ const MainScrollContent = styled.main`
   @media (max-width: 400px) {
     margin: 10px;
     height: 44px;
-    width: 98%;
+    width: 97%;
   }
 `;
 

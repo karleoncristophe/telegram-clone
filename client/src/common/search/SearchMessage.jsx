@@ -13,7 +13,7 @@ const Container = styled.div`
 
   @media (max-width: 1202px) {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
   }
 
