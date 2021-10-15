@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import LeftArrowImg from '../../assets/icons/left-arrow.png';
 import { Avatar } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import api from '../../services/api';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 
 const Container = styled.div`
@@ -206,36 +207,35 @@ const NickName = styled.span`
 `;
 
 const SearchChat = ({ closeSearch }) => {
-  const [messages, setMessages] = useState([]);
-  const [messageSearch, setMessageSearch] = useState('');
-  const [filteredMessages, setfilteredMessages] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [searchUsers, setSearchUsers] = useState('');
+  const [filteredUsers, setFilteredUsers] = useState([]);
 
   const ChatImage =
     'https://t3.ftcdn.net/jpg/03/02/41/08/240_F_302410851_oPS6nnVa0e2bexWL9vVR85kcha5uLkuz.jpg';
 
   const onChange = e => {
-    setMessageSearch(e.target.value);
+    setSearchUsers(e.target.value);
   };
 
   useEffect(() => {
-    setfilteredMessages(
-      messages.filter(get => {
+    setFilteredUsers(
+      users.filter(get => {
         return (
-          get.name.toLowerCase().includes(messageSearch.toLocaleLowerCase()) ||
-          `@${get.userName}`
+          get.name.toLowerCase().includes(searchUsers.toLocaleLowerCase()) ||
+          `@${get.username}`
             .toLowerCase()
-            .includes(messageSearch.toLocaleLowerCase())
+            .includes(searchUsers.toLocaleLowerCase())
         );
       })
     );
-  }, [messageSearch, messages]);
+  }, [searchUsers, users]);
 
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const reponse = await fetch('http://localhost:4000/users');
-        const data = await reponse.json();
-        setMessages(data);
+        const { data } = await api.get('users');
+        setUsers(data);
       } catch (error) {
         console.log(error);
       }
@@ -261,9 +261,9 @@ const SearchChat = ({ closeSearch }) => {
         </OptionsAndSearch>
       </Head>
       <MainProfileContent>
-        {messageSearch.length !== 0 && (
+        {searchUsers.length !== 0 && (
           <>
-            {filteredMessages.map((item, index) => (
+            {filteredUsers.map((item, index) => (
               <ChatMenuButton key={item.id + index.toString()}>
                 <ProfileAvatar
                   size={52}
@@ -273,7 +273,7 @@ const SearchChat = ({ closeSearch }) => {
 
                 <ProfileInformation>
                   <Name>{item.name}</Name>
-                  <NickName>@{item.userName}</NickName>
+                  <NickName>@{item.username}</NickName>
                 </ProfileInformation>
               </ChatMenuButton>
             ))}
