@@ -351,7 +351,7 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
       ) : (
         <>
           {searchPeople ? (
-            <SearchChat closeSearch={closeSearch} />
+            <SearchChat closeSearch={closeSearch} openChat={openChat} />
           ) : (
             <>
               <Head>

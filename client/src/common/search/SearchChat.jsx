@@ -206,7 +206,7 @@ const NickName = styled.span`
   color: #6e6c6c;
 `;
 
-const SearchChat = ({ closeSearch }) => {
+const SearchChat = ({ closeSearch, openChat }) => {
   const [users, setUsers] = useState([]);
   const [searchUsers, setSearchUsers] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
@@ -223,9 +223,7 @@ const SearchChat = ({ closeSearch }) => {
       users.filter(get => {
         return (
           get.name.toLowerCase().includes(searchUsers.toLocaleLowerCase()) ||
-          `@${get.username}`
-            .toLowerCase()
-            .includes(searchUsers.toLocaleLowerCase())
+          get.username.toLowerCase().includes(searchUsers.toLocaleLowerCase())
         );
       })
     );
@@ -264,7 +262,10 @@ const SearchChat = ({ closeSearch }) => {
         {searchUsers.length !== 0 && (
           <>
             {filteredUsers.map((item, index) => (
-              <ChatMenuButton key={item.id + index.toString()}>
+              <ChatMenuButton
+                key={item.id + index.toString()}
+                onClick={openChat}
+              >
                 <ProfileAvatar
                   size={52}
                   style={{ width: '64px' }}
@@ -273,7 +274,7 @@ const SearchChat = ({ closeSearch }) => {
 
                 <ProfileInformation>
                   <Name>{item.name}</Name>
-                  <NickName>@{item.username}</NickName>
+                  <NickName>{item.username}</NickName>
                 </ProfileInformation>
               </ChatMenuButton>
             ))}
