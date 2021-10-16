@@ -234,12 +234,10 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
   useEffect(() => {
     setfilteredMessages(
       messages.filter(get => {
-        return (
-          get.message
-            .toLowerCase()
-            .includes(messageSearch.toLocaleLowerCase()) ||
-          get.user.toLowerCase().includes(messageSearch.toLocaleLowerCase())
-        );
+        return get.message
+          .toLowerCase()
+          .includes(messageSearch.toLocaleLowerCase());
+        // get.user.toLowerCase().includes(messageSearch.toLocaleLowerCase())
       })
     );
   }, [messageSearch, messages]);
@@ -285,7 +283,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
                   <ProfileAvatar src={chatImage} />
                   <ProfileInformation>
                     <NameViewAndHour>
-                      <Name>{item.user}</Name>
+                      <Name>Teste</Name>
                     </NameViewAndHour>
                     <Message>{item.message}</Message>
                   </ProfileInformation>
