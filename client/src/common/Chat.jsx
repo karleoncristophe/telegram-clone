@@ -132,11 +132,7 @@ const SearchAndMenuContent = styled.div`
   justify-content: center;
   justify-content: space-evenly;
   height: 49px;
-  width: 96px;
-
-  @media (max-width: 952px) {
-    width: 70px;
-  }
+  width: 100px;
 `;
 
 const ImageSearch = styled(SearchOutlined)`
