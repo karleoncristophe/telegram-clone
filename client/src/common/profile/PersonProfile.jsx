@@ -9,6 +9,8 @@ import PersonUser from '../../assets/icons/personUser.png';
 const Container = styled.div`
   height: 100%;
   width: 420px;
+  transition: all ease 0.5s;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   background: #212121;
@@ -264,7 +266,10 @@ const PersonProfile = ({
     setVoice(prev => !prev);
   };
   return (
-    <Container openChatMessage={openChatMessage}>
+    <Container
+      openChatMessage={openChatMessage}
+      style={{ width: openProfileInformation ? '420px' : '0px' }}
+    >
       <Header>
         <CloseAndTitle>
           <Close onClick={closeProfile}>

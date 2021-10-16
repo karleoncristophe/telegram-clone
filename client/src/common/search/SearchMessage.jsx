@@ -7,9 +7,12 @@ import api from '../../services/api';
 const Container = styled.div`
   height: 100%;
   width: 420px;
+  transition: all ease 0.5s;
+  overflow: hidden;
   display: flex;
+  background: #c53a3a;
+  /* background: #212121; */
   flex-direction: column;
-
   @media (max-width: 1202px) {
     position: absolute;
     right: 0;
@@ -27,7 +30,6 @@ const ContainerScroll = styled.div`
   width: 420px;
   display: flex;
   flex-direction: column;
-  background: #212121;
   overflow-y: scroll;
   overflow-x: hidden;
 
@@ -216,7 +218,7 @@ const Message = styled.span`
   width: 80%;
 `;
 
-const SearchMessage = ({ close, openChatMessage }) => {
+const SearchMessage = ({ close, openSearch, openChatMessage }) => {
   const [messages, setMessages] = useState([]);
   const [messageSearch, setMessageSearch] = useState('');
   const [filteredMessages, setfilteredMessages] = useState([]);
@@ -253,7 +255,10 @@ const SearchMessage = ({ close, openChatMessage }) => {
     // eslint-disable-next-line
   }, []);
   return (
-    <Container openChatMessage={openChatMessage}>
+    <Container
+      openChatMessage={openChatMessage}
+      style={{ width: openSearch ? '420px' : '0px' }}
+    >
       <Header>
         <CloseAndInput>
           <LeftArowButton onClick={close}>

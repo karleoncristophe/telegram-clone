@@ -239,7 +239,7 @@ const ViewMessages = styled.div`
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  scroll-snap-align: end;
+  /* scroll-snap-align: end; */
 
   @media (max-width: 1202px) {
     display: flex;
@@ -500,6 +500,8 @@ const Chat = ({ openChatMessage, closeChat }) => {
   const [openSearch, setOpenSearch] = useState(false);
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
 
+  // const body = useRef();
+
   const location = useLocation();
   const nick = location.state.user;
 
@@ -614,6 +616,13 @@ const Chat = ({ openChatMessage, closeChat }) => {
   }, [socket]);
 
   // useEffect(() => {
+  //   if (body.current.scrollHeigth > body.current.offsetHeigth) {
+  //     body.current.scrollTop =
+  //       body.current.scrollHeigth - body.current.offsetHeigth;
+  //   }
+  // }, [sendMessage]);
+
+  // useEffect(() => {
   //    setInterval(() => {
   //       getData();
   //       getUser();
@@ -665,6 +674,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
             <ChatViewContent>
               <MainScrollContent>
                 <ViewMessages
+                  // ref={body}
                   style={{
                     width:
                       openProfileInformation || openSearch
@@ -760,24 +770,18 @@ const Chat = ({ openChatMessage, closeChat }) => {
             </ChatViewContent>
           </ChatContent>
           <>
-            {openProfileInformation ? (
-              <PersonProfile
-                closeProfile={closeProfile}
-                openProfileInformation={openProfileInformation}
-                nick={nick}
-                openChatMessage={openChatMessage}
-              />
-            ) : null}
-            {openSearch ? (
-              <SearchMessage
-                close={closeMessageFinder}
-                open={openMessageFinder}
-                messages={messages}
-                setMessages={setMessages}
-                openChatMessage={openChatMessage}
-                openProfileInformation={openProfileInformation}
-              />
-            ) : null}
+            <PersonProfile
+              closeProfile={closeProfile}
+              openProfileInformation={openProfileInformation}
+              nick={nick}
+              openChatMessage={openChatMessage}
+            />
+
+            <SearchMessage
+              openSearch={openSearch}
+              close={closeMessageFinder}
+              openChatMessage={openChatMessage}
+            />
           </>
         </ChatBackground>
       ) : null}
