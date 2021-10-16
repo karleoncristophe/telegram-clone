@@ -143,6 +143,7 @@ const DeleteAccount = styled.span`
 
 const TrashImage = styled(DeleteOutlined)`
   font-size: 1.37rem;
+  color: #ec5b5b;
 `;
 
 const EditProfileContent = styled.div`
