@@ -8,7 +8,8 @@ import PersonUser from '../../assets/icons/personUser.png';
 
 const Container = styled.div`
   height: 100%;
-  width: 420px;
+  width: ${props => (props.openProfileInformation ? '670px' : '0px')};
+
   transition: all ease 0.5s;
   overflow: hidden;
   display: flex;
@@ -16,13 +17,14 @@ const Container = styled.div`
   background: #212121;
 
   @media (max-width: 1202px) {
+    width: ${props => (props.openProfileInformation ? '420px' : '0px')};
     position: absolute;
     right: 0;
     top: 0;
   }
 
   @media (max-width: 600px) {
-    width: 100%;
+    width: ${props => (props.openProfileInformation ? '100%' : '0px')};
     display: ${props => (props.openChatMessage ? 'flex' : 'none')};
   }
 `;
@@ -268,7 +270,8 @@ const PersonProfile = ({
   return (
     <Container
       openChatMessage={openChatMessage}
-      style={{ width: openProfileInformation ? '420px' : '0px' }}
+      openProfileInformation={openProfileInformation}
+      // style={{ width: openProfileInformation ? '420px' : '0px' }}
     >
       <Header>
         <CloseAndTitle>
@@ -312,6 +315,34 @@ const PersonProfile = ({
             </PersonDataHead>
 
             <PersonDataImageContent>
+              {media ? (
+                <MediaContent>
+                  <Card>Media</Card>
+                </MediaContent>
+              ) : (
+                ''
+              )}
+              {files ? (
+                <MediaContent>
+                  <Card>Files</Card>
+                </MediaContent>
+              ) : (
+                ''
+              )}
+              {links ? (
+                <MediaContent>
+                  <Card>Links</Card>
+                </MediaContent>
+              ) : (
+                ''
+              )}
+              {voice ? (
+                <MediaContent>
+                  <Card>Voice</Card>
+                </MediaContent>
+              ) : (
+                ''
+              )}{' '}
               {media ? (
                 <MediaContent>
                   <Card>Media</Card>

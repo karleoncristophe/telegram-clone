@@ -6,21 +6,24 @@ import api from '../../services/api';
 
 const Container = styled.div`
   height: 100%;
-  width: 420px;
+  width: ${props => (props.openSearch ? '670px' : '0px')};
   transition: all ease 0.5s;
   overflow: hidden;
   display: flex;
+  position: relative;
   background: #c53a3a;
   /* background: #212121; */
   flex-direction: column;
+
   @media (max-width: 1202px) {
+    width: ${props => (props.openSearch ? '420px' : '0px')};
     position: absolute;
     right: 0;
     top: 0;
   }
 
   @media (max-width: 600px) {
-    width: 100%;
+    width: ${props => (props.openSearch ? '100%' : '0px')};
     display: ${props => (props.openChatMessage ? 'flex' : 'none')};
   }
 `;
@@ -255,10 +258,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
     // eslint-disable-next-line
   }, []);
   return (
-    <Container
-      openChatMessage={openChatMessage}
-      style={{ width: openSearch ? '420px' : '0px' }}
-    >
+    <Container openChatMessage={openChatMessage} openSearch={openSearch}>
       <Header>
         <CloseAndInput>
           <LeftArowButton onClick={close}>
