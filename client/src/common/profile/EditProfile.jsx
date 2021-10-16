@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import LeftArrowImg from '../../assets/icons/left-arrow.png';
 import CheckedImg from '../../assets/icons/checked.png';
 import { message, Modal } from 'antd';
 import { CameraOutlined } from '@ant-design/icons';
 import UserImage from '../../assets/icons/user.png';
 import api from '../../services/api';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   display: flex;
@@ -71,17 +71,18 @@ const SettingsContent = styled.div`
 const LeftArowButton = styled.button`
   border-radius: 50%;
   border: none;
-  width: 36px;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
   background: none;
-
   &:hover {
     background: #383737;
     transition: 1s;
   }
 `;
 
-const LeftArowImage = styled.img`
-  height: 20px;
+const LeftArowImage = styled(ArrowLeftOutlined)`
+  font-size: 1.25rem;
 `;
 
 const SettingsTitle = styled.span`
@@ -456,7 +457,7 @@ const EditProfile = ({ openEdit }) => {
       <SettingsContainer>
         <SettingsContent>
           <LeftArowButton onClick={openEdit}>
-            <LeftArowImage src={LeftArrowImg} />
+            <LeftArowImage />
           </LeftArowButton>
           <SettingsTitle>Settings</SettingsTitle>
         </SettingsContent>

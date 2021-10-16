@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { SearchOutlined } from '@ant-design/icons';
-import LeftArrowImg from '../../assets/icons/left-arrow.png';
+import {
+  SearchOutlined,
+  CalendarOutlined,
+  ArrowLeftOutlined,
+} from '@ant-design/icons';
+
 import api from '../../services/api';
 
 const Container = styled.div`
@@ -75,29 +79,44 @@ const Header = styled.header`
 const CloseAndInput = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 50px;
   width: 100%;
-  margin-left: 20px;
-  margin-right: 20px;
   margin-top: 5px;
 `;
 
 const LeftArowButton = styled.button`
   border-radius: 50%;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
   background: none;
-  margin-left: 10px;
   &:hover {
     background: #383737;
     transition: 1s;
   }
 `;
 
-const LeftArowImage = styled.img`
-  height: 20px;
+const CalendarButton = styled.button`
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
+  background: none;
+  &:hover {
+    background: #383737;
+    transition: 1s;
+  }
+`;
+
+const LeftArowImage = styled(ArrowLeftOutlined)`
+  font-size: 1.25rem;
+`;
+
+const CalendarIcon = styled(CalendarOutlined)`
+  font-size: 1.25rem;
 `;
 
 const SearchContent = styled.button`
@@ -105,16 +124,8 @@ const SearchContent = styled.button`
   align-items: center;
   border-radius: 30px;
   border: 2px solid #8774e1;
-
   background: #181818;
   height: 90%;
-  width: 90%;
-  margin-left: 5px;
-
-  @media (max-width: 1202px) {
-    width: 88%;
-    margin-right: 10px;
-  }
 `;
 
 const ImageSearchContent = styled.div`
@@ -221,7 +232,7 @@ const Message = styled.span`
 const SubtitleContent = styled.div`
   display: flex;
   width: 100%;
-  padding-left: 10px;
+  padding-left: 20px;
   margin-top: 20px;
 `;
 
@@ -271,7 +282,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
       <Header>
         <CloseAndInput>
           <LeftArowButton onClick={close}>
-            <LeftArowImage src={LeftArrowImg} />
+            <LeftArowImage />
           </LeftArowButton>
           <SearchContent>
             <ImageSearchContent>
@@ -284,6 +295,9 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
               onChange={onChange}
             />
           </SearchContent>
+          <CalendarButton onClick={close}>
+            <CalendarIcon />
+          </CalendarButton>
         </CloseAndInput>
         <SubtitleContent>
           <Subtitle>Search for messages</Subtitle>

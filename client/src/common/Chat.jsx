@@ -5,14 +5,11 @@ import io from 'socket.io-client';
 import styled from 'styled-components';
 import Picker from 'emoji-picker-react';
 import TrashImg from '../assets/icons/trash.svg';
-import ImgMenu from '../assets/icons/anothermenu.png';
 import ImgEmoji from '../assets/icons/emoji.png';
-
 import ImgAirplane from '../assets/icons/sendmessage.png';
 import Messages from '../common/Messages';
 import PersonProfile from '../common/profile/PersonProfile';
 import SearchMessage from '../common/search/SearchMessage';
-import LeftArrowImg from '../assets/icons/left-arrow.png';
 import {
   AudioOutlined,
   PaperClipOutlined,
@@ -21,6 +18,7 @@ import {
   SearchOutlined,
   MoreOutlined,
   SendOutlined,
+  ArrowLeftOutlined,
 } from '@ant-design/icons';
 
 const socket = io('http://192.168.0.107:4000');
@@ -449,11 +447,11 @@ const MenuOptions = styled(Menu)`
 const LeftArowButton = styled.button`
   border-radius: 50%;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
   background: none;
   margin-left: 5px;
-
   &:hover {
     background: #383737;
     transition: 1s;
@@ -464,8 +462,8 @@ const LeftArowButton = styled.button`
   }
 `;
 
-const LeftArowImage = styled.img`
-  height: 20px;
+const LeftArowImage = styled(ArrowLeftOutlined)`
+  font-size: 1.25rem;
 `;
 
 const MenuClipItem = styled(Menu)`
@@ -639,8 +637,8 @@ const Chat = ({ openChatMessage, closeChat }) => {
           >
             <Header>
               <ProfileContent>
-                <LeftArowButton>
-                  <LeftArowImage src={LeftArrowImg} onClick={closeChat} />
+                <LeftArowButton onClick={closeChat}>
+                  <LeftArowImage />
                 </LeftArowButton>
                 <ProfileContentButton
                   onClick={openProfile}
@@ -666,7 +664,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                   overlayStyle={{ background: 'none' }}
                 >
                   <MoreOptions>
-                    <ImageMenu src={ImgMenu} />
+                    <ImageMenu />
                   </MoreOptions>
                 </Dropdown>
               </SearchAndMenuContent>

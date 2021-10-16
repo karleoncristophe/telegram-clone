@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import LeftArrowImg from '../../assets/icons/left-arrow.png';
 import { Avatar } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import api from '../../services/api';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 
@@ -24,19 +23,18 @@ const Container = styled.div`
 const LeftArowButton = styled.button`
   border-radius: 50%;
   border: none;
-  width: 42px;
-  height: 42px;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
   background: none;
-  margin-right: 5px;
-
   &:hover {
     background: #383737;
     transition: 1s;
   }
 `;
 
-const LeftArowImage = styled.img`
-  height: 20px;
+const LeftArowImage = styled(ArrowLeftOutlined)`
+  font-size: 1.25rem;
 `;
 
 const Head = styled.header`
@@ -48,8 +46,8 @@ const Head = styled.header`
 
 const OptionsAndSearch = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-evenly;
   width: 100%;
 
   @media (max-width: 1202px) {
@@ -247,7 +245,7 @@ const SearchChat = ({ closeSearch, openChat }) => {
       <Head>
         <OptionsAndSearch>
           <LeftArowButton onClick={closeSearch}>
-            <LeftArowImage src={LeftArrowImg} />
+            <LeftArowImage />
           </LeftArowButton>
 
           <SearchButton>

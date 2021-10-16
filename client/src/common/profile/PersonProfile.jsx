@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 // import { Modal, Button } from 'antd';
-import ImgClose from '../../assets/icons/close.png';
 import ImgArroba from '../../assets/icons/arroba.png';
 import ImgInformation from '../../assets/icons/information.png';
 import PersonUser from '../../assets/icons/personUser.png';
+import { CloseOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   height: 100%;
@@ -81,26 +81,23 @@ const CloseAndTitle = styled.div`
   justify-content: space-between;
   height: 100%;
   width: 120px;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 20px;
 `;
 const Close = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: none;
   border-radius: 50%;
-  width: 37px;
-  height: 37px;
-
+  border: none;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
+  background: none;
   &:hover {
     background: #383737;
     transition: 1s;
   }
 `;
-const CloseImage = styled.img`
-  height: 22px;
+const CloseImage = styled(CloseOutlined)`
+  font-size: 1.25rem;
 `;
 const Title = styled.span`
   font-size: 1.4rem;
@@ -276,7 +273,7 @@ const PersonProfile = ({
       <Header>
         <CloseAndTitle>
           <Close onClick={closeProfile}>
-            <CloseImage src={ImgClose} />
+            <CloseImage />
           </Close>
           <Title>Profile</Title>
         </CloseAndTitle>

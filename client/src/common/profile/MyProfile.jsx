@@ -3,11 +3,10 @@ import { MoreOutlined, ImportOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Modal } from 'antd';
 import styled from 'styled-components';
-import LeftArrowImg from '../../assets/icons/left-arrow.png';
 import PencilImg from '../../assets/icons/pencil.svg';
-import TrashImg from '../../assets/icons/trash.svg';
 import UserImage from '../../assets/icons/user.png';
 import api from '../../services/api';
+import { ArrowLeftOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const ProfileContent = styled.div`
   background: #212121;
@@ -80,19 +79,19 @@ const SettingsContent = styled.div`
 const LeftArowButton = styled.button`
   border-radius: 50%;
   border: none;
-  width: 36px;
+  width: 40px;
+  height: 40px;
+  color: #8a8787;
   background: none;
-
   &:hover {
     background: #383737;
     transition: 1s;
   }
 `;
 
-const LeftArowImage = styled.img`
-  height: 20px;
+const LeftArowImage = styled(ArrowLeftOutlined)`
+  font-size: 1.25rem;
 `;
-
 const MenuImageButton = styled(Dropdown)`
   display: flex;
   justify-content: center;
@@ -142,8 +141,8 @@ const DeleteAccount = styled.span`
   letter-spacing: 1px;
 `;
 
-const TrashImage = styled.img`
-  height: 22px;
+const TrashImage = styled(DeleteOutlined)`
+  font-size: 1.37rem;
 `;
 
 const EditProfileContent = styled.div`
@@ -275,7 +274,7 @@ const MyProfile = ({ settings, openEdit }) => {
       <SettingsContainer>
         <SettingsContent>
           <LeftArowButton onClick={settings}>
-            <LeftArowImage src={LeftArrowImg} />
+            <LeftArowImage />
           </LeftArowButton>
           <SettingsTitle>Settings</SettingsTitle>
         </SettingsContent>
@@ -302,7 +301,7 @@ const MyProfile = ({ settings, openEdit }) => {
           <EditProfileSpan>Edit Profile</EditProfileSpan>
         </EditProfileButton>
         <DeleteAccountButton onClick={() => modalVisible(true)} type="primary">
-          <TrashImage src={TrashImg} />
+          <TrashImage />
           <DeleteAccount>Delete Acount</DeleteAccount>
         </DeleteAccountButton>
         <ModalContent
