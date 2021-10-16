@@ -64,8 +64,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   width: 100%;
-  height: 60px;
-
+  flex-direction: column;
   background: #212121;
   border: 1px solid #000000;
   border-right: none;
@@ -77,10 +76,11 @@ const CloseAndInput = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100%;
+  height: 50px;
   width: 100%;
   margin-left: 20px;
   margin-right: 20px;
+  margin-top: 5px;
 `;
 
 const LeftArowButton = styled.button`
@@ -89,7 +89,7 @@ const LeftArowButton = styled.button`
   width: 36px;
   height: 36px;
   background: none;
-
+  margin-left: 10px;
   &:hover {
     background: #383737;
     transition: 1s;
@@ -103,19 +103,17 @@ const LeftArowImage = styled.img`
 const SearchContent = styled.button`
   display: flex;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 30px;
   border: 2px solid #8774e1;
 
   background: #181818;
-  height: 42px;
+  height: 90%;
   width: 90%;
   margin-left: 5px;
 
   @media (max-width: 1202px) {
-    height: 2.3rem;
     width: 88%;
     margin-right: 10px;
-    height: 42px;
   }
 `;
 
@@ -123,7 +121,7 @@ const ImageSearchContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 42px;
+  height: 100%;
   width: 44px;
 `;
 
@@ -140,7 +138,7 @@ const SearchInput = styled.input`
   font-size: 1rem;
   font-weight: 500;
   color: #ffff;
-  height: 42px;
+  height: 100%;
   width: 100%;
 `;
 
@@ -220,6 +218,20 @@ const Message = styled.span`
   width: 80%;
 `;
 
+const SubtitleContent = styled.div`
+  display: flex;
+  width: 100%;
+  padding-left: 10px;
+  margin-top: 20px;
+`;
+
+const Subtitle = styled.span`
+  color: #bdbbbb;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+`;
+
 const SearchMessage = ({ close, openSearch, openChatMessage }) => {
   const [messages, setMessages] = useState([]);
   const [messageSearch, setMessageSearch] = useState('');
@@ -273,6 +285,9 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
             />
           </SearchContent>
         </CloseAndInput>
+        <SubtitleContent>
+          <Subtitle>Search for messages</Subtitle>
+        </SubtitleContent>
       </Header>
       <ContainerScroll>
         {messageSearch.length !== 0 && (
