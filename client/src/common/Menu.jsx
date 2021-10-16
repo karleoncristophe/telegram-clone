@@ -18,12 +18,7 @@ import {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   background: #212121;
-  border: 1px solid #000000;
-  border-right: none;
-  border-top: none;
-  border-bottom: none;
   width: 420px;
 
   @media (max-width: 1202px) {
