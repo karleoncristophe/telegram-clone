@@ -11,8 +11,7 @@ const Container = styled.div`
   overflow: hidden;
   display: flex;
   position: relative;
-  background: #c53a3a;
-  /* background: #212121; */
+  background: #212121;
   flex-direction: column;
 
   @media (max-width: 1202px) {
