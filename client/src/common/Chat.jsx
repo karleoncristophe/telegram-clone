@@ -39,6 +39,7 @@ const Container = styled.div`
 
   @media (max-width: 911px) {
     width: 100%;
+    border: none;
     display: ${props => (props.openChatMessage ? 'flex' : 'none')};
   }
 `;
