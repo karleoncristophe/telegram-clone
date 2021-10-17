@@ -66,7 +66,6 @@ const ProfileContent = styled.div`
 
 const Header = styled.header`
   display: flex;
-  align-items: center;
   width: 100%;
   flex-direction: column;
   background: #212121;
@@ -231,7 +230,7 @@ const Message = styled.span`
 
 const SubtitleContent = styled.div`
   display: flex;
-  width: 100%;
+  width: 170px;
   padding-left: 20px;
   margin-top: 20px;
 `;
@@ -239,6 +238,7 @@ const SubtitleContent = styled.div`
 const Subtitle = styled.span`
   color: #bdbbbb;
   font-size: 1rem;
+  width: 200px;
   font-weight: 600;
   text-align: left;
 `;
