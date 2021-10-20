@@ -228,8 +228,6 @@ const Chat = ({ openChatMessage, closeChat }) => {
   const [openProfileInformation, setOpenProfileInformation] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
-  // const body = useRef();
-
   const location = useLocation();
   const nick = location.state.user;
 
@@ -260,20 +258,6 @@ const Chat = ({ openChatMessage, closeChat }) => {
 
   const ChatImage =
     'https://t3.ftcdn.net/jpg/03/02/41/08/240_F_302410851_oPS6nnVa0e2bexWL9vVR85kcha5uLkuz.jpg';
-
-  // useEffect(() => {
-  //   if (body.current.scrollHeigth > body.current.offsetHeigth) {
-  //     body.current.scrollTop =
-  //       body.current.scrollHeigth - body.current.offsetHeigth;
-  //   }
-  // }, [sendMessage]);
-
-  // useEffect(() => {
-  //    setInterval(() => {
-  //       getData();
-  //       getUser();
-  //    }, 1000);
-  // }, []);
 
   return (
     <Container openChatMessage={openChatMessage}>
