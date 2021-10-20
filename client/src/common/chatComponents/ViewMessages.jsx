@@ -337,15 +337,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     setMessages([...messages, newMessage]);
 
     socket.emit('message', newMessage);
-
-    // const body = JSON.stringify({
-    //    user: `${nick}`,
-    //    message: `${sendMessage}`,
-    // });
-
     clearInput();
-    // getData();
-    // getUser();
   };
 
   const remove = () => {
@@ -366,7 +358,6 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     <ChatViewContent>
       <MainScrollContent>
         <ViewMessage
-          // ref={body}
           style={{
             width: openProfileInformation || openSearch ? '98%' : '54%' < '98%',
             transition: openProfileInformation || openSearch ? '0s' : '0.2s',
