@@ -22,10 +22,6 @@ const Container = styled.div`
   position: relative;
   background: #0e0d0d;
 
-  @media (max-width: 1202px) {
-    width: 571.2px;
-  }
-
   @media (max-width: 911px) {
     width: 100%;
     border: none;

@@ -17,15 +17,11 @@ import {
 
 const socket = io('http://192.168.0.107:4000');
 
-const ChatViewContent = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100%;
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: blue;
   overflow: hidden;
 
   @media (max-width: 1202px) {
@@ -86,10 +82,24 @@ const MainScrollContent = styled.main`
   }
 `;
 
+const ViewMessageContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+`;
+
 const ViewMessage = styled.div`
   display: flex;
-  align-items: center;
+
   flex-direction: column;
+  width: 60%;
+
+  @media (max-width: 1600px) {
+    display: flex;
+    width: 70%;
+  }
 
   @media (max-width: 1202px) {
     display: flex;
@@ -99,6 +109,7 @@ const ViewMessage = styled.div`
 
 const Footer = styled.footer`
   display: flex;
+  justify-content: center;
   padding: 3px;
   width: 100%;
   @media (max-width: 500px) {
@@ -109,9 +120,21 @@ const Footer = styled.footer`
 const Items = styled.div`
   display: flex;
   justify-content: center;
-  width: 100%;
+
   height: 54px;
   margin: 10px;
+
+  width: 60%;
+
+  @media (max-width: 1600px) {
+    display: flex;
+    width: 70%;
+  }
+
+  @media (max-width: 1202px) {
+    display: flex;
+    width: 98%;
+  }
 `;
 
 const SendMessageContent = styled.div`
@@ -335,24 +358,26 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     // eslint-disable-next-line
   }, [socket]);
   return (
-    <ChatViewContent>
+    <Container>
       <MainScrollContent>
-        <ViewMessage
-          style={{
-            transition: openProfileInformation || openSearch ? '0s' : '0.2s',
-          }}
-        >
-          {messages.map((data, index) => (
-            <Messages
-              key={data.id + index.toString()}
-              data={data}
-              user={nick}
-              openProfile={openProfile}
-              openSearch={openSearch}
-              remove={remove}
-            />
-          ))}
-        </ViewMessage>
+        <ViewMessageContent>
+          <ViewMessage
+            style={{
+              transition: openProfileInformation || openSearch ? '0s' : '0.2s',
+            }}
+          >
+            {messages.map((data, index) => (
+              <Messages
+                key={data.id + index.toString()}
+                data={data}
+                user={nick}
+                openProfile={openProfile}
+                openSearch={openSearch}
+                remove={remove}
+              />
+            ))}
+          </ViewMessage>
+        </ViewMessageContent>
       </MainScrollContent>
 
       <Footer>
@@ -418,7 +443,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
           </RecordContent>
         </Items>
       </Footer>
-    </ChatViewContent>
+    </Container>
   );
 };
 
