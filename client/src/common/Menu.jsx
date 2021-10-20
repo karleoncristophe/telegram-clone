@@ -4,9 +4,9 @@ import { useLocation } from 'react-router';
 import { Avatar, Menu, Dropdown } from 'antd';
 import MenuOption from '../assets/icons/menu.png';
 import ViewImg from '../assets/icons/viewblack.png';
-import SearchChat from '../common/search/SearchChat';
-import EditProfile from '../common/profile/EditProfile';
-import MyProfile from '../common/profile/MyProfile';
+import SearchChat from '../common/menuComponents/SearchChat';
+import EditProfile from '../common/menuComponents/EditProfile';
+import MyProfile from '../common/menuComponents/MyProfile';
 import {
   SettingOutlined,
   UserOutlined,
