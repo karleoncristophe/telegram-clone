@@ -38,12 +38,6 @@ const ChatContent = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    display: ${props =>
-      props.openProfileInformation || props.openSearch ? 'none' : 'flex'};
-  }
 `;
 
 const ChatBackground = styled.div`
@@ -301,6 +295,7 @@ const Chat = ({ openChatMessage, closeChat }) => {
                 </Dropdown>
               </SearchAndMenuContent>
             </Header>
+
             <ViewMessages openProfile={openProfile} />
           </ChatContent>
           <>

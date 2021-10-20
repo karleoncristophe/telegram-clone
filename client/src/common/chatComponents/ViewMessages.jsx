@@ -17,15 +17,29 @@ import {
 
 const socket = io('http://192.168.0.107:4000');
 
+const ChatViewContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background: blue;
+  overflow: hidden;
+
+  @media (max-width: 1202px) {
+    width: 100%;
+  }
+`;
+
 const MainScrollContent = styled.main`
   display: flex;
   flex-direction: column;
-  align-items: center;
   flex: 1;
   width: 100%;
   overflow-x: scroll;
   scroll-snap-type: y mandatory;
-
   ::-webkit-scrollbar {
     width: 7px;
     height: 0px;
@@ -74,12 +88,8 @@ const MainScrollContent = styled.main`
 
 const ViewMessage = styled.div`
   display: flex;
-  position: relative;
-  width: 53%;
   align-items: center;
-  justify-content: flex-start;
   flex-direction: column;
-  /* scroll-snap-align: end; */
 
   @media (max-width: 1202px) {
     display: flex;
@@ -87,21 +97,10 @@ const ViewMessage = styled.div`
   }
 `;
 
-const ChatViewContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-`;
-
 const Footer = styled.footer`
   display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 3px;
   width: 100%;
-
   @media (max-width: 500px) {
     padding: 1px;
   }
@@ -109,21 +108,10 @@ const Footer = styled.footer`
 
 const Items = styled.div`
   display: flex;
-  align-items: center;
   justify-content: center;
   width: 100%;
   height: 54px;
   margin: 10px;
-
-  @media (max-width: 1202px) {
-    height: 54px;
-    width: 98%;
-  }
-
-  @media (max-width: 400px) {
-    height: 44px;
-    width: 98%;
-  }
 `;
 
 const SendMessageContent = styled.div`
@@ -132,11 +120,7 @@ const SendMessageContent = styled.div`
   border-radius: 13px 13px 13px 13px;
   background: #212121;
   height: 100%;
-  width: 48%;
-
-  @media (max-width: 1202px) {
-    width: 98%;
-  }
+  width: 100%;
 `;
 
 const EmojiContent = styled.button`
@@ -167,10 +151,6 @@ const Input = styled.input`
   font-size: 1.1rem;
   color: #ffffff;
   width: 100%;
-
-  @media (max-width: 952px) {
-    width: 100%;
-  }
 `;
 
 const MenuClipButton = styled(Dropdown)`
@@ -359,7 +339,6 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
       <MainScrollContent>
         <ViewMessage
           style={{
-            width: openProfileInformation || openSearch ? '98%' : '54%' < '98%',
             transition: openProfileInformation || openSearch ? '0s' : '0.2s',
           }}
         >
@@ -380,8 +359,6 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
         <Items>
           <SendMessageContent
             style={{
-              width:
-                openProfileInformation || openSearch ? '98%' : '56%' > '98%',
               transition: openProfileInformation || openSearch ? '0s' : '0.2s',
             }}
           >

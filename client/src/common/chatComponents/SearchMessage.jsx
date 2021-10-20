@@ -5,6 +5,7 @@ import {
   CalendarOutlined,
   ArrowLeftOutlined,
 } from '@ant-design/icons';
+import UserImage from '../../assets/icons/user.png';
 
 import api from '../../services/api';
 
@@ -19,7 +20,7 @@ const Container = styled.div`
   flex-direction: column;
 
   @media (max-width: 1202px) {
-    width: ${props => (props.openSearch ? '420px' : '0px')};
+    width: ${props => (props.openSearch ? '380px' : '0px')};
     position: absolute;
     right: 0;
     top: 0;
@@ -33,7 +34,7 @@ const Container = styled.div`
 
 const ContainerScroll = styled.div`
   height: 100%;
-  width: 420px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
@@ -155,18 +156,13 @@ const SearchInput = styled.input`
 const ChatMenuButton = styled.button`
   display: flex;
   align-items: center;
-  width: 95%;
+  width: 96%;
   height: 72px;
-
-  background: none;
   border-radius: 18px;
   outline: none;
   border: none;
   margin-top: 2px;
-
-  @media (max-width: 1202px) {
-    width: 96%;
-  }
+  background: none;
 
   &:hover {
     background: #292929;
@@ -177,10 +173,11 @@ const ChatMenuButton = styled.button`
   }
 `;
 
-const ProfileAvatar = styled.img`
+const ProfileAvatar = styled.div`
   width: 60px;
   height: 58px;
-
+  background-size: cover;
+  background-image: url(${UserImage});
   border-radius: 50%;
 `;
 
@@ -252,8 +249,6 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
     setMessageSearch(e.target.value);
   };
 
-  const chatImage = 'https://avatarfiles.alphacoders.com/715/71560.jpg';
-
   useEffect(() => {
     setfilteredMessages(
       messages.filter(get => {
@@ -309,7 +304,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
             {filteredMessages.map((item, index) => (
               <ProfileContent key={item.id + index.toString()}>
                 <ChatMenuButton>
-                  <ProfileAvatar src={chatImage} />
+                  <ProfileAvatar />
                   <ProfileInformation>
                     <NameViewAndHour>
                       <Name>Teste</Name>

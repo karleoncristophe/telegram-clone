@@ -17,7 +17,7 @@ const Container = styled.div`
   background: #212121;
 
   @media (max-width: 1202px) {
-    width: ${props => (props.openProfileInformation ? '420px' : '0px')};
+    width: ${props => (props.openProfileInformation ? '380px' : '0px')};
     position: absolute;
     right: 0;
     top: 0;
@@ -25,7 +25,6 @@ const Container = styled.div`
 
   @media (max-width: 600px) {
     width: ${props => (props.openProfileInformation ? '100%' : '0px')};
-    display: ${props => (props.openChatMessage ? 'flex' : 'none')};
   }
 `;
 
@@ -56,7 +55,7 @@ const ContainerScroll = styled.div`
 const ProfileContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 423px;
+  width: 380px;
   @media (max-width: 600px) {
     width: ${props => (props.openChatMessage ? '100%' : '423px')};
   }
@@ -107,7 +106,6 @@ const Title = styled.span`
 `;
 
 const PersonAvatarContent = styled.main`
-  /* height: 560px; */
   width: 100%;
 `;
 const PersonInformation = styled.div`
@@ -140,15 +138,15 @@ const PersonNameAndBioContent = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  overflow: hidden;
   text-overflow: ellipsis;
+  word-wrap: break-word;
   margin-left: 20px;
 `;
 
 const PersonNameAndBio = styled.span`
   color: #707579;
   font-size: 1.2rem;
-  word-wrap: break-word;
+
   line-height: 20px;
 `;
 
@@ -157,7 +155,6 @@ const PersonDataContent = styled.footer`
   flex-direction: column;
   flex: 1;
   width: 100%;
-  /* background: #00eeff; */
 `;
 const PersonDataHead = styled.div`
   width: 100%;
@@ -193,31 +190,11 @@ const PersonDataImageContent = styled.div`
   flex-wrap: wrap;
 `;
 
-// const PersonDataImage = styled.img`
-//   width: 139.33px;
-//   height: 139.33px;
-//   background: #6a52da;
-// `;
-
-// const PersonDataImageModal = styled.img`
-//   width: 600px;
-//   height: 600px;
-//   background: #6a52da;
-// `;
-
 const Space = styled.div`
   width: 100%;
   height: 15px;
   background: #181818;
 `;
-
-// const ButtonModal = styled(Button)`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 139.33px;
-//   height: 139.33px;
-// `;
 
 const MediaContent = styled.div`
   display: flex;
@@ -245,9 +222,13 @@ const PersonProfile = ({
   openChatMessage,
 }) => {
   // const [visible, setVisible] = useState(false);
+  // eslint-disable-next-line
   const [media, setMedia] = useState(true);
+  // eslint-disable-next-line
   const [files, setFiles] = useState(false);
+  // eslint-disable-next-line
   const [links, setLinks] = useState(false);
+  // eslint-disable-next-line
   const [voice, setVoice] = useState(false);
 
   const openMedia = () => {
@@ -268,7 +249,6 @@ const PersonProfile = ({
     <Container
       openChatMessage={openChatMessage}
       openProfileInformation={openProfileInformation}
-      // style={{ width: openProfileInformation ? '420px' : '0px' }}
     >
       <Header>
         <CloseAndTitle>
@@ -312,86 +292,9 @@ const PersonProfile = ({
             </PersonDataHead>
 
             <PersonDataImageContent>
-              {media ? (
-                <MediaContent>
-                  <Card>Media</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {files ? (
-                <MediaContent>
-                  <Card>Files</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {links ? (
-                <MediaContent>
-                  <Card>Links</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {voice ? (
-                <MediaContent>
-                  <Card>Voice</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}{' '}
-              {media ? (
-                <MediaContent>
-                  <Card>Media</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {files ? (
-                <MediaContent>
-                  <Card>Files</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {links ? (
-                <MediaContent>
-                  <Card>Links</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {voice ? (
-                <MediaContent>
-                  <Card>Voice</Card>
-                </MediaContent>
-              ) : (
-                ''
-              )}
-              {/* <ButtonModal type="primary" onClick={() => setVisible(true)}>
-                <PersonDataImage
-                  src={
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy419PY8pgjFNv6vvOiNHrTz0WIWDH8v0Tsi04IsjGlcVU7uTOMJzuqT8DB6ufVDGUNl4&usqp=CAU'
-                  }
-                />
-              </ButtonModal>
-
-              <Modal
-                visible={visible}
-                onOk={() => setVisible(false)}
-                onCancel={() => setVisible(false)}
-                width={800}
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
-              >
-                <PersonDataImageModal
-                  src={
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy419PY8pgjFNv6vvOiNHrTz0WIWDH8v0Tsi04IsjGlcVU7uTOMJzuqT8DB6ufVDGUNl4&usqp=CAU'
-                  }
-                />
-              </Modal> */}
+              <MediaContent>
+                <Card>Media</Card>
+              </MediaContent>
             </PersonDataImageContent>
           </PersonDataContent>
         </ProfileContent>
