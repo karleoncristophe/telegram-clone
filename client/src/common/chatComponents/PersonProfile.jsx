@@ -55,10 +55,7 @@ const ContainerScroll = styled.div`
 const ProfileContent = styled.div`
   display: flex;
   flex-direction: column;
-  width: 380px;
-  @media (max-width: 600px) {
-    width: ${props => (props.openChatMessage ? '100%' : '423px')};
-  }
+  width: 100%;
 `;
 
 const Header = styled.header`
