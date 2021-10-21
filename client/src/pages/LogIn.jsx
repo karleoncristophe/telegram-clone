@@ -7,14 +7,42 @@ import api from '../services/api';
 
 const Container = styled.div`
   display: flex;
+  background: #212121;
+  font-family: 'Hind Siliguri', sans-serif;
+  overflow: hidden;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+`;
+
+const Scroll = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
   background: #212121;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-weight: 500;
   font-family: 'Hind Siliguri', sans-serif;
+  overflow-x: scroll;
+  scroll-snap-type: y mandatory;
+
+  overflow-x: scroll;
+  scroll-snap-type: y mandatory;
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 0px;
+    display: flex;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+  }
 `;
 
 const RecordContent = styled.div`
@@ -22,10 +50,9 @@ const RecordContent = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
-  /* background: #212121; */
   width: 408px;
   border-radius: 5px;
-  height: 100vh;
+  height: 100%;
   margin-top: 40px;
 
   @media (max-width: 600px) {
@@ -130,21 +157,15 @@ const ButtonCreateAccount = styled.button`
 `;
 
 const LogoContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Logo = styled.img`
   width: 200px;
   height: 200px;
 
-  @media (max-width: 600px) {
-    width: 150px;
-    height: 150px;
-  }
-`;
-
-const Logo = styled.div`
-  background: url(${ImgLogo});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
   @media (max-width: 600px) {
     width: 150px;
     height: 150px;
@@ -275,46 +296,48 @@ const LogIn = () => {
 
   return (
     <Container>
-      <RecordContent>
-        <LogoContent>
-          <Logo />
-        </LogoContent>
-        <Title>Log In Telegram</Title>
-        <SubTitle>Write your information to join the community.</SubTitle>
+      <Scroll>
+        <RecordContent>
+          <LogoContent>
+            <Logo src={ImgLogo} />
+          </LogoContent>
+          <Title>Log In Telegram</Title>
+          <SubTitle>Write your information to join the community.</SubTitle>
 
-        <InputContainer>
-          <InputEmailitle>Email</InputEmailitle>
-          <Input
-            autoFocus
-            type="text "
-            value={email}
-            placeholder="Write your email"
-            onChange={e => setEmail(e.target.value)}
-          />
-        </InputContainer>
-        <InputContainer>
-          <InputPasswordTitle>Password</InputPasswordTitle>
+          <InputContainer>
+            <InputEmailitle>Email</InputEmailitle>
+            <Input
+              autoFocus
+              type="text "
+              value={email}
+              placeholder="Write your email"
+              onChange={e => setEmail(e.target.value)}
+            />
+          </InputContainer>
+          <InputContainer>
+            <InputPasswordTitle>Password</InputPasswordTitle>
 
-          <Input
-            type="password"
-            name="password"
-            autoComplete="on"
-            value={password}
-            placeholder="Write your password"
-            onChange={e => setPassword(e.target.value)}
-          />
-        </InputContainer>
-        <ButtonContentLogIn>
-          <ButtonLogIn onClick={submit} disabled={email === ''}>
-            Log In
-          </ButtonLogIn>
-        </ButtonContentLogIn>
-        <ButtonContentCreateAccount to="/createAccount">
-          <ButtonCreateAccount>
-            Already registered? Create account
-          </ButtonCreateAccount>
-        </ButtonContentCreateAccount>
-      </RecordContent>
+            <Input
+              type="password"
+              name="password"
+              autoComplete="on"
+              value={password}
+              placeholder="Write your password"
+              onChange={e => setPassword(e.target.value)}
+            />
+          </InputContainer>
+          <ButtonContentLogIn>
+            <ButtonLogIn onClick={submit} disabled={email === ''}>
+              Log In
+            </ButtonLogIn>
+          </ButtonContentLogIn>
+          <ButtonContentCreateAccount to="/createAccount">
+            <ButtonCreateAccount>
+              Already registered? Create account
+            </ButtonCreateAccount>
+          </ButtonContentCreateAccount>
+        </RecordContent>
+      </Scroll>
     </Container>
   );
 };

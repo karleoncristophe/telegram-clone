@@ -10,14 +10,42 @@ import api from '../services/api';
 
 const Container = styled.div`
   display: flex;
+  background: #212121;
+  font-family: 'Hind Siliguri', sans-serif;
+  overflow: hidden;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
+`;
+
+const Scroll = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
   background: #212121;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-weight: 500;
   font-family: 'Hind Siliguri', sans-serif;
+  overflow-x: scroll;
+  scroll-snap-type: y mandatory;
+
+  overflow-x: scroll;
+  scroll-snap-type: y mandatory;
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 0px;
+    display: flex;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+  }
 `;
 
 const RecordContent = styled.div`
@@ -25,10 +53,9 @@ const RecordContent = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
-  /* background: #212121; */
   width: 408px;
   border-radius: 5px;
-  height: 100vh;
+  height: 100%;
   margin-top: 40px;
 
   @media (max-width: 600px) {
@@ -133,21 +160,15 @@ const ButtonLogIn = styled.button`
 `;
 
 const LogoContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Logo = styled.img`
   width: 200px;
   height: 200px;
 
-  @media (max-width: 600px) {
-    width: 150px;
-    height: 150px;
-  }
-`;
-
-const Logo = styled.div`
-  background: url(${ImgLogo});
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
   @media (max-width: 600px) {
     width: 150px;
     height: 150px;
@@ -337,54 +358,55 @@ const CreateAccount = ({ type, color }) => {
       {loading ? (
         <Lottie options={defaultLocation} height={200} width={200} />
       ) : (
-        <RecordContent>
-          <LogoContent>
-            <Logo />
-          </LogoContent>
-          <Title>Create a free account</Title>
-          <SubTitle>
-            Create your account and enjoy a good conversation.
-          </SubTitle>
-          <InputContainer>
-            <InputNameTitle>Name</InputNameTitle>
-            <Input
-              autoFocus
-              type="text"
-              value={user}
-              placeholder="Choose a Name"
-              onChange={e => setUser(e.target.value)}
-            />
-          </InputContainer>
-          <InputContainer>
-            <InputUserNameTitle>User Name</InputUserNameTitle>
-            <Input
-              type="text"
-              value={username}
-              placeholder="Choose a username"
-              onChange={e => setUsername(e.target.value)}
-            />
-          </InputContainer>
-          <InputContainer>
-            <InputEmailTitle>Email</InputEmailTitle>
-            <Input
-              type="text"
-              value={email}
-              placeholder="Choose a email"
-              onChange={e => setEmail(e.target.value)}
-            />
-          </InputContainer>{' '}
-          <InputContainer>
-            <InputPasswordTitle>Password</InputPasswordTitle>
-            <Input
-              type="password"
-              name="password"
-              autoComplete="on"
-              value={password}
-              placeholder="Choose a password"
-              onChange={e => setPassword(e.target.value)}
-            />
-          </InputContainer>
-          {/* <InputContainer>
+        <Scroll>
+          <RecordContent>
+            <LogoContent>
+              <Logo src={ImgLogo} />
+            </LogoContent>
+            <Title>Create a free account</Title>
+            <SubTitle>
+              Create your account and enjoy a good conversation.
+            </SubTitle>
+            <InputContainer>
+              <InputNameTitle>Name</InputNameTitle>
+              <Input
+                autoFocus
+                type="text"
+                value={user}
+                placeholder="Choose a Name"
+                onChange={e => setUser(e.target.value)}
+              />
+            </InputContainer>
+            <InputContainer>
+              <InputUserNameTitle>User Name</InputUserNameTitle>
+              <Input
+                type="text"
+                value={username}
+                placeholder="Choose a username"
+                onChange={e => setUsername(e.target.value)}
+              />
+            </InputContainer>
+            <InputContainer>
+              <InputEmailTitle>Email</InputEmailTitle>
+              <Input
+                type="text"
+                value={email}
+                placeholder="Choose a email"
+                onChange={e => setEmail(e.target.value)}
+              />
+            </InputContainer>{' '}
+            <InputContainer>
+              <InputPasswordTitle>Password</InputPasswordTitle>
+              <Input
+                type="password"
+                name="password"
+                autoComplete="on"
+                value={password}
+                placeholder="Choose a password"
+                onChange={e => setPassword(e.target.value)}
+              />
+            </InputContainer>
+            {/* <InputContainer>
                <InputConfirmPasswordTitle>
                   Confirm Password
                </InputConfirmPasswordTitle>
@@ -395,15 +417,16 @@ const CreateAccount = ({ type, color }) => {
                   onChange={e => setConfirmPassword(e.target.value)}
                />
             </InputContainer> */}
-          <ButtonContent>
-            <Button type="submit" onClick={submit} disabled={user === ''}>
-              Create Account
-            </Button>
-          </ButtonContent>
-          <ButtonContentLogIn to="/">
-            <ButtonLogIn>Come Back</ButtonLogIn>
-          </ButtonContentLogIn>
-        </RecordContent>
+            <ButtonContent>
+              <Button type="submit" onClick={submit} disabled={user === ''}>
+                Create Account
+              </Button>
+            </ButtonContent>
+            <ButtonContentLogIn to="/">
+              <ButtonLogIn>Come Back</ButtonLogIn>
+            </ButtonContentLogIn>
+          </RecordContent>
+        </Scroll>
       )}
     </Container>
   );

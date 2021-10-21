@@ -14,6 +14,7 @@ const Container = styled.div`
   width: 100%;
   overflow-x: scroll;
   scroll-snap-type: y mandatory;
+
   ::-webkit-scrollbar {
     width: 7px;
     height: 0px;
@@ -27,11 +28,6 @@ const Container = styled.div`
   ::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-  }
-
-  @media (max-width: 1202px) {
-    height: 100%;
-    width: 100%;
   }
 `;
 
