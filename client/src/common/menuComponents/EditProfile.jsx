@@ -373,7 +373,7 @@ const EditProfile = ({ openEdit }) => {
     formData.append('file', image);
     try {
       // const { data } = await api.put('postImage', formData);
-      const { data } = await api.post('postImage', formData);
+      const { data } = await api.post('postImageAvatar', formData);
       console.log(data);
       message.success('Imagem enviada.');
     } catch (error) {
