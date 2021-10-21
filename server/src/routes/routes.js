@@ -139,7 +139,7 @@ routes.get('/imageMe', async (req, res) => {
 });
 
 routes.post(
-  '/postImageAvatar',
+  '/postImage',
   authenticate,
   multer(upload).single('file'),
   async (req, res) => {
