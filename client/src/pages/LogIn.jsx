@@ -9,8 +9,8 @@ const Container = styled.div`
   display: flex;
   background: #212121;
   font-family: 'Hind Siliguri', sans-serif;
-  overflow: hidden;
-  height: 100vh;
+  overflow-y: hidden;
+  height: 100%;
   width: 100%;
 `;
 
@@ -18,7 +18,6 @@ const Scroll = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  background: #212121;
   justify-content: center;
   align-items: center;
   flex-direction: column;

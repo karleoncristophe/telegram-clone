@@ -18,6 +18,7 @@ import {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   background: #212121;
   width: 420px;
 

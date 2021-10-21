@@ -13,7 +13,7 @@ const Container = styled.div`
   background: #212121;
   font-family: 'Hind Siliguri', sans-serif;
   overflow: hidden;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 `;
 
