@@ -86,19 +86,21 @@ const ViewMessageContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
 `;
 
 const ViewMessage = styled.div`
   display: flex;
-
   flex-direction: column;
-  width: 60%;
+  width: ${props =>
+    props.openProfileInformation || props.openSearch ? '98%' : '60%'};
+  transition: ${props =>
+    props.openProfileInformation || props.openSearch ? '0.2s' : '0.2s'};
 
   @media (max-width: 1600px) {
     display: flex;
-    width: 70%;
+    width: ${props =>
+      props.openProfileInformation || props.openSearch ? '98%' : '70%'};
   }
 
   @media (max-width: 1202px) {
@@ -120,15 +122,17 @@ const Footer = styled.footer`
 const Items = styled.div`
   display: flex;
   justify-content: center;
-
   height: 54px;
   margin: 10px;
-
-  width: 60%;
+  width: ${props =>
+    props.openProfileInformation || props.openSearch ? '98%' : '60%'};
+  transition: ${props =>
+    props.openProfileInformation || props.openSearch ? '0.2s' : '0.2s'};
 
   @media (max-width: 1600px) {
     display: flex;
-    width: 70%;
+    width: ${props =>
+      props.openProfileInformation || props.openSearch ? '98%' : '70%'};
   }
 
   @media (max-width: 1202px) {
@@ -362,9 +366,8 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
       <MainScrollContent>
         <ViewMessageContent>
           <ViewMessage
-            style={{
-              transition: openProfileInformation || openSearch ? '0s' : '0.2s',
-            }}
+            openProfileInformation={openProfileInformation}
+            openSearch={openSearch}
           >
             {messages.map((data, index) => (
               <Messages
@@ -381,12 +384,11 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
       </MainScrollContent>
 
       <Footer>
-        <Items>
-          <SendMessageContent
-            style={{
-              transition: openProfileInformation || openSearch ? '0s' : '0.2s',
-            }}
-          >
+        <Items
+          openProfileInformation={openProfileInformation}
+          openSearch={openSearch}
+        >
+          <SendMessageContent>
             <Dropdown
               onClick={openEmojiPicker}
               overlay={openEmoji}

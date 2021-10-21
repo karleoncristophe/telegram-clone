@@ -292,7 +292,11 @@ const Chat = ({ openChatMessage, closeChat }) => {
               </SearchAndMenuContent>
             </Header>
 
-            <ViewMessages openProfile={openProfile} />
+            <ViewMessages
+              openProfile={openProfile}
+              openProfileInformation={openProfileInformation}
+              openSearch={openSearch}
+            />
           </ChatContent>
           <>
             <PersonProfile
