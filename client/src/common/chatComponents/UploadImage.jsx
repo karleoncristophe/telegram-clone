@@ -1,36 +1,33 @@
-import styled from 'styled-components';
-import { PictureOutlined, FolderOutlined } from '@ant-design/icons';
-import api from '../../services/api';
 import { useState } from 'react';
+import { Modal } from 'antd';
+import { PictureOutlined, FolderOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
+import api from '../../services/api';
 
 const Container = styled.form`
-  display: flex;
-  margin: none;
-  border-radius: 10px;
   overflow: hidden;
+  border-radius: 10px;
   position: relative;
-  top: -7px;
+  top: -17px;
   left: 10px;
+  display: flex;
+  flex-direction: column;
   background: #181717;
 `;
 
 const ChooseImageInput = styled.input`
   display: none;
 `;
-const ChooseImage = styled.label`
-  display: flex;
-  flex-direction: column;
-`;
 
-const MenuItem = styled.div`
+const ChooseImageConent = styled.label`
   display: flex;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 50px;
   font-size: 1rem;
   font-weight: 600;
   color: #d8d6d6;
-  align-items: center;
-  padding-left: 10px;
-  padding-right: 10px;
 
   &&:hover {
     background: #252424;
@@ -38,28 +35,27 @@ const MenuItem = styled.div`
   }
 `;
 
-const Button = styled.button`
-  height: 50px;
+const ChooseImage = styled.span`
   font-size: 1rem;
   font-weight: 600;
   color: #d8d6d6;
-  background: none;
-  border: none;
 `;
 
 const PictureOutlinedImage = styled(PictureOutlined)`
   font-size: 1.3rem;
+  margin-right: 10px;
   color: #d8d6d6;
 `;
 
 const FolderOutlinedImage = styled(FolderOutlined)`
   font-size: 1.3rem;
+  margin-right: 10px;
   color: #d8d6d6;
 `;
 
 const UploadImage = () => {
   const [image, setImage] = useState('');
-
+  const [imageModal, setImageModal] = useState(true);
   const uploadImage = async e => {
     e.preventDefault();
 
@@ -72,6 +68,13 @@ const UploadImage = () => {
       console.log(error);
     }
   };
+
+  const closeModal = () => {
+    // openEdit();
+    setImageModal(false);
+    setImage('');
+  };
+
   return (
     <Container onSubmit={uploadImage}>
       <ChooseImageInput
@@ -79,16 +82,27 @@ const UploadImage = () => {
         id="img"
         onChange={e => setImage(e.target.files[0])}
       />
-      <ChooseImage htmlFor="img">
-        <MenuItem>
-          <PictureOutlinedImage />
-          <Button>Photo or Video</Button>
-        </MenuItem>
-        <MenuItem>
-          <FolderOutlinedImage />
-          <Button>Document</Button>
-        </MenuItem>
-      </ChooseImage>
+
+      <ChooseImageConent htmlFor="img">
+        <PictureOutlinedImage />
+        <ChooseImage>Photo or Video</ChooseImage>
+      </ChooseImageConent>
+      <ChooseImageConent htmlFor="img">
+        <FolderOutlinedImage />
+        <ChooseImage>Document</ChooseImage>
+      </ChooseImageConent>
+
+      {image.length !== 0 && (
+        <Modal
+          title="Update your profile picture."
+          centered
+          visible={imageModal}
+          onOk={uploadImage}
+          onCancel={closeModal}
+        >
+          Do you want to change your profile picture?
+        </Modal>
+      )}
     </Container>
   );
 };
