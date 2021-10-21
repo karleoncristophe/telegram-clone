@@ -10,10 +10,9 @@ import { Menu, Dropdown } from 'antd';
 import {
   AudioOutlined,
   PaperClipOutlined,
-  PictureOutlined,
   SendOutlined,
-  FolderOutlined,
 } from '@ant-design/icons';
+import UploadImage from './UploadImage';
 
 const socket = io('http://192.168.0.107:4000');
 
@@ -256,29 +255,6 @@ const PickContent = styled(Menu)`
   }
 `;
 
-const MenuClipItem = styled(Menu)`
-  display: flex;
-  flex-direction: column;
-  background: #181717;
-  margin: none;
-  border-radius: 10px;
-  overflow: hidden;
-  top: -17px;
-  left: 10px;
-`;
-
-const MenuItem = styled(Menu.Item)`
-  height: 50px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #d8d6d6;
-
-  &&:hover {
-    background: #252424;
-    transition: 0.5s;
-  }
-`;
-
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
@@ -318,26 +294,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     </PickContent>
   );
 
-  const menuClip = (
-    <MenuClipItem>
-      <MenuItem
-        key="1"
-        icon={
-          <PictureOutlined style={{ fontSize: '23px', paddingRight: '20px' }} />
-        }
-      >
-        Photo or Video
-      </MenuItem>
-      <MenuItem
-        key="2"
-        icon={
-          <FolderOutlined style={{ fontSize: '23px', paddingRight: '20px' }} />
-        }
-      >
-        Document
-      </MenuItem>
-    </MenuClipItem>
-  );
+  const menuClip = <UploadImage />;
 
   const submit = async () => {
     const newMessage = { message: sendMessage, user: nick, id: Date.now() };
