@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Avatar } from 'antd';
 import { SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import api from '../../services/api';
+import UserImage from '../../assets/icons/user.png';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 
 const Container = styled.div`
@@ -173,12 +174,12 @@ const ChatMenuButton = styled.button`
   }
 `;
 
-const ProfileAvatar = styled(Avatar)`
-  margin-left: 5px;
-
-  @media (max-width: 1202px) {
-    width: 4.12rem;
-  }
+const ProfileAvatar = styled.div`
+  width: 75px;
+  height: 60px;
+  background-size: cover;
+  background-image: url(${UserImage});
+  border-radius: 50%;
 `;
 
 const ProfileInformation = styled.div`
@@ -208,9 +209,6 @@ const SearchChat = ({ closeSearch, openChat }) => {
   const [users, setUsers] = useState([]);
   const [searchUsers, setSearchUsers] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
-
-  const ChatImage =
-    'https://t3.ftcdn.net/jpg/03/02/41/08/240_F_302410851_oPS6nnVa0e2bexWL9vVR85kcha5uLkuz.jpg';
 
   const onChange = e => {
     setSearchUsers(e.target.value);
@@ -264,11 +262,7 @@ const SearchChat = ({ closeSearch, openChat }) => {
                 key={item.id + index.toString()}
                 onClick={openChat}
               >
-                <ProfileAvatar
-                  size={52}
-                  style={{ width: '64px' }}
-                  src={ChatImage}
-                />
+                <ProfileAvatar />
 
                 <ProfileInformation>
                   <Name>{item.name}</Name>
