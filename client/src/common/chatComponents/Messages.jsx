@@ -103,8 +103,8 @@ const ProfileAvatarButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   background-size: cover;
   background-image: url(${UserImage});
