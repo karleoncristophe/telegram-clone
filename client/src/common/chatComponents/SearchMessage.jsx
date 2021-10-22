@@ -126,6 +126,11 @@ const SearchContent = styled.button`
   border: 2px solid #8774e1;
   background: #181818;
   height: 90%;
+  width: 250px;
+
+  @media (max-width: 600px) {
+    width: 200px;
+  }
 `;
 
 const ImageSearchContent = styled.div`
@@ -150,7 +155,11 @@ const SearchInput = styled.input`
   font-weight: 500;
   color: #ffff;
   height: 100%;
-  width: 100%;
+  width: 200px;
+
+  @media (max-width: 600px) {
+    width: 150px;
+  }
 `;
 
 const ChatMenuButton = styled.button`
@@ -174,7 +183,7 @@ const ChatMenuButton = styled.button`
 `;
 
 const ProfileAvatar = styled.div`
-  width: 60px;
+  width: 58px;
   height: 58px;
   background-size: cover;
   background-image: url(${UserImage});
