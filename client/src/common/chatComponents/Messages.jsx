@@ -100,8 +100,6 @@ const ProfileContent = styled.div`
 const ProfileAvatarButton = styled.button`
   margin-left: 5px;
   display: flex;
-  align-items: center;
-  justify-content: center;
   border: none;
   height: 35px;
   width: 35px;
