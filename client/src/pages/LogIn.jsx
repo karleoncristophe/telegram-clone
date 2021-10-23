@@ -26,8 +26,6 @@ const Scroll = styled.div`
   overflow-x: scroll;
   scroll-snap-type: y mandatory;
 
-  overflow-x: scroll;
-  scroll-snap-type: y mandatory;
   ::-webkit-scrollbar {
     width: 7px;
     height: 0px;

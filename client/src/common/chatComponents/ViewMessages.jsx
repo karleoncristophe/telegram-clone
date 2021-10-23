@@ -268,7 +268,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     setChosenEmoji(true);
   };
 
-  const onEmojiClick = (event, emojiObject) => {
+  const onEmojiClick = emojiObject => {
     setSendMessage(sendMessage + emojiObject.emoji);
     setChosenEmoji(emojiObject);
   };

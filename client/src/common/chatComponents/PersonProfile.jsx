@@ -9,8 +9,7 @@ import { CloseOutlined } from '@ant-design/icons';
 const Container = styled.div`
   height: 100%;
   width: ${props => (props.openProfileInformation ? '670px' : '0px')};
-
-  transition: all ease 0.5s;
+  transition: all ease 0.2s;
   overflow: hidden;
   display: flex;
   flex-direction: column;

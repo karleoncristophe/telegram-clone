@@ -12,7 +12,7 @@ import api from '../../services/api';
 const Container = styled.div`
   height: 100%;
   width: ${props => (props.openSearch ? '670px' : '0px')};
-  transition: all ease 0.5s;
+  transition: all ease 0.2s;
   overflow: hidden;
   display: flex;
   position: relative;
