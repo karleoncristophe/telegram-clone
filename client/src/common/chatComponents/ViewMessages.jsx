@@ -13,6 +13,7 @@ import {
   SendOutlined,
 } from '@ant-design/icons';
 import UploadImage from './UploadImage';
+import api from '../../services/api';
 
 const socket = io('http://192.168.0.107:4000');
 
@@ -257,7 +258,7 @@ const PickContent = styled(Menu)`
 
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const [messages, setMessages] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState('');
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
 
@@ -318,6 +319,15 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     });
     // eslint-disable-next-line
   }, [socket]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const { data } = api.get('messages');
+      setUsers(data);
+      console.log(data);
+    };
+    getUsers();
+  }, []);
   return (
     <Container>
       <MainScrollContent>
