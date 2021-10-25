@@ -131,12 +131,8 @@ routes.delete('/users/:id', async (req, res) => {
 //  endpoints for images
 
 routes.get('/image', async (req, res) => {
-  const image = await Image.find().sort({ createdAt: 1 });
-  res.status(200).send(image);
-});
-
-routes.get('/imageMe', async (req, res) => {
-  const image = await User.findOne({ _id: req.logged });
+  const image = await Image.find().sort({ createdAt: 1 }).populate('user');
+  image.user;
   res.status(200).send(image);
 });
 
