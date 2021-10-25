@@ -9,14 +9,14 @@ const authenticate = require('../middlewares/authenticate');
 const upload = require('../middlewares/upload');
 
 //  endpoints for messages
-routes.get('/messages', authenticate, async (req, res) => {
+routes.get('/messages', async (req, res) => {
   const message = await Message.find().sort({ createdAt: 1 }).populate('user');
   message.user;
   console.log(message);
   res.send(message);
 });
 
-routes.post('/messages', async (req, res) => {
+routes.post('/messages', authenticate, async (req, res) => {
   const message = await Message.create(req.body);
   res.send(message);
 });
