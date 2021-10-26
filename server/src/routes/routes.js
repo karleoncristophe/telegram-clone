@@ -12,7 +12,6 @@ const upload = require('../middlewares/upload');
 routes.get('/messages', async (req, res) => {
   const message = await Message.find().sort({ createdAt: 1 }).populate('user');
   message.user;
-  console.log(message);
   res.send(message);
 });
 
