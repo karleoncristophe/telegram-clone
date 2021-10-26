@@ -72,7 +72,6 @@ const Options = styled.button`
 
 const ImageMenu = styled(MenuOutlined)`
   font-size: 18px;
-  margin-top: 3px;
   color: #8a8787;
 `;
 
@@ -400,5 +399,3 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
 };
 
 export default ChatMenu;
-
-// #707579

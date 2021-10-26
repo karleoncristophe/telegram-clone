@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const MessageSchema = new mongoose.Schema(
   {
     message: String,
-    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    userTo: { type: Schema.Types.ObjectId, ref: 'User' },
+    userFrom: { type: Schema.Types.ObjectId, ref: 'User' },
   },
   {
     timestamps: {

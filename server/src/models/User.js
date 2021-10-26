@@ -1,5 +1,4 @@
 const mongoose = require('../libs/Mongoose');
-const Schema = mongoose.Schema;
 const UserSchema = new mongoose.Schema(
   {
     name: String,

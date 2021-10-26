@@ -6,6 +6,8 @@ import ImgEmoji from '../../assets/icons/emoji.png';
 import ImgAirplane from '../../assets/icons/sendmessage.png';
 import Messages from './Messages';
 import Picker from 'emoji-picker-react';
+// import Lottie from 'react-lottie';
+// import * as location from '../../assets/icons/1055-world-locations.json';
 import { Menu, Dropdown } from 'antd';
 import {
   AudioOutlined,
@@ -17,16 +19,21 @@ import api from '../../services/api';
 
 const socket = io('http://192.168.0.107:4000');
 
+// const LottieContent = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   height: 100%;
+//   width: 100%;
+//   overflow: hidden;
+//   justify-content: center;
+// `;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
   overflow: hidden;
-
-  @media (max-width: 1202px) {
-    width: 100%;
-  }
 `;
 
 const MainScrollContent = styled.main`
@@ -256,11 +263,21 @@ const PickContent = styled(Menu)`
   }
 `;
 
+// const defaultLocation = {
+//   loop: true,
+//   autoplay: true,
+//   animationData: location.default,
+//   rendererSettings: {
+//     preserveAspectRatio: 'xMidYMid slice',
+//   },
+// };
+
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState('');
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
+  // const [loading, setLoading] = useState(false);
 
   const location = useLocation();
   const nick = location.state.user;
@@ -328,7 +345,15 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     };
     getUsers();
   }, []);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setLoading(true);
+  //   }, [1500]);
+  // }, []);
   return (
+    // <>
+    //   {loading ? (
     <Container>
       <MainScrollContent>
         <ViewMessageContent>
@@ -413,6 +438,12 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
         </Items>
       </Footer>
     </Container>
+    //   ) : (
+    //     <LottieContent>
+    //       <Lottie options={defaultLocation} height={200} width={200} />
+    //     </LottieContent>
+    //   )}
+    // </>
   );
 };
 
