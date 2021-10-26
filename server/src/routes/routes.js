@@ -9,17 +9,15 @@ const authenticate = require('../middlewares/authenticate');
 const upload = require('../middlewares/upload');
 
 //  endpoints for messages
-routes.get('/messages', async (req, res) => {
-  const message = await Message.find()
+routes.get('/messages', authenticate, async (req, res) => {
+  const messages = await Message.find()
     .sort({ createdAt: 1 })
-    .populate('userTo')
-    .populate('userFrom');
-  message.userTo;
-  message.userFrom;
-  res.status(200).send(message);
+    .populate('userFrom')
+    .populate('userTo');
+  res.send(messages);
 });
 
-routes.post('/messages', authenticate, async (req, res) => {
+routes.post('/messages', async (req, res) => {
   const message = await Message.create(req.body);
   res.status(200).send(message);
 });
@@ -134,8 +132,7 @@ routes.delete('/users/:id', async (req, res) => {
 //  endpoints for images
 
 routes.get('/image', async (req, res) => {
-  const image = await Image.find().sort({ createdAt: 1 }).populate('user');
-  image.user;
+  const image = await Image.find().sort({ createdAt: 1 });
   res.status(200).send(image);
 });
 

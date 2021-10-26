@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { useLocation } from 'react-router';
 import { Avatar, Menu, Dropdown } from 'antd';
 import MenuOption from '../assets/icons/menu.png';
 import ViewImg from '../assets/icons/viewblack.png';
@@ -276,9 +275,6 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
   const [openEditProfile, setOpenEditProfile] = useState(false);
   const [searchPeople, setSearchPeople] = useState(false);
 
-  const location = useLocation();
-  const nick = location.state.name;
-
   const settings = () => {
     setOpenSettings(prev => !prev);
   };
@@ -340,7 +336,7 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
           {openEditProfile ? (
             <EditProfile openEdit={openEdit} />
           ) : (
-            <MyProfile settings={settings} nick={nick} openEdit={openEdit} />
+            <MyProfile settings={settings} openEdit={openEdit} />
           )}
         </>
       ) : (

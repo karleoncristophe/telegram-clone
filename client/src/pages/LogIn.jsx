@@ -264,7 +264,6 @@ const LogIn = () => {
 
       history.push({
         pathname: '/app',
-        state: { user: data.user },
       });
       localStorage.setItem('@telegram.token', data.token);
     } catch (e) {

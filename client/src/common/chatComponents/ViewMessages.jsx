@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router';
 import styled from 'styled-components';
 import io from 'socket.io-client';
 import ImgEmoji from '../../assets/icons/emoji.png';
@@ -273,14 +272,14 @@ const PickContent = styled(Menu)`
 // };
 
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
+  const [user, setUser] = useState('');
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState('');
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
   // const [loading, setLoading] = useState(false);
 
-  const location = useLocation();
-  const nick = location.state.user;
+  const nick = user?._id;
 
   const openEmojiPicker = () => {
     setChosenEmoji(true);
@@ -315,7 +314,11 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const menuClip = <UploadImage />;
 
   const submit = async () => {
-    const newMessage = { message: sendMessage, user: nick, id: Date.now() };
+    const newMessage = {
+      message: sendMessage,
+      userFrom: `${user?._id}`,
+      id: Date.now(),
+    };
     setMessages([...messages, newMessage]);
 
     socket.emit('message', newMessage);
@@ -341,9 +344,20 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     const getUsers = async () => {
       const { data } = api.get('messages');
       setUsers(data);
-      console.log(data);
     };
     getUsers();
+  }, []);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const { data } = await api.get('me');
+        setUser(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRepos();
   }, []);
 
   // useEffect(() => {
