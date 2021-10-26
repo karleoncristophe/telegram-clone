@@ -12,18 +12,18 @@ const upload = require('../middlewares/upload');
 routes.get('/messages', async (req, res) => {
   const message = await Message.find().sort({ createdAt: 1 }).populate('user');
   message.user;
-  res.send(message);
+  res.status(200).send(message);
 });
 
 routes.post('/messages', authenticate, async (req, res) => {
   const message = await Message.create(req.body);
-  res.send(message);
+  res.status(200).send(message);
 });
 
 //  endpoints for users
 routes.get('/users', async (req, res) => {
   const name = await User.find().sort({ createdAt: 1 });
-  res.send(name);
+  res.status(200).send(name);
 });
 
 routes.get('/me', authenticate, async (req, res) => {
