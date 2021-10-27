@@ -274,12 +274,9 @@ const PickContent = styled(Menu)`
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const [user, setUser] = useState('');
   const [messages, setMessages] = useState([]);
-  const [users, setUsers] = useState('');
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
   // const [loading, setLoading] = useState(false);
-
-  const nick = user?._id;
 
   const openEmojiPicker = () => {
     setChosenEmoji(true);
@@ -316,7 +313,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const submit = async () => {
     const newMessage = {
       message: sendMessage,
-      userFrom: `${user?._id}`,
+      userFrom: user?._id,
       id: Date.now(),
     };
     setMessages([...messages, newMessage]);
@@ -325,11 +322,11 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     clearInput();
   };
 
-  const remove = () => {
-    const rem = users.filter(item => item.id !== nick);
-    setUsers(rem);
-    console.log(rem);
-  };
+  // const remove = () => {
+  //   const rem = users.filter(item => item.id !== nick);
+  //   setUsers(rem);
+  //   console.log(rem);
+  // };
 
   useEffect(() => {
     const socket = io('http://192.168.0.107:4000');
@@ -339,14 +336,6 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     });
     // eslint-disable-next-line
   }, [socket]);
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const { data } = api.get('messages');
-      setUsers(data);
-    };
-    getUsers();
-  }, []);
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -379,10 +368,9 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
               <Messages
                 key={data.id + index.toString()}
                 data={data}
-                user={nick}
+                user={user}
                 openProfile={openProfile}
                 openSearch={openSearch}
-                remove={remove}
               />
             ))}
           </ViewMessage>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { Menu, Dropdown } from 'antd';
-import userImage from '../../assets/icons/user.png';
+import UserImage from '../../assets/icons/user.png';
 import { RestOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
@@ -105,7 +105,7 @@ const ProfileAvatarButton = styled.button`
   width: 35px;
   border-radius: 50%;
   background-size: cover;
-  background-image: url(${userImage});
+  background-image: url(${UserImage});
 `;
 
 const MessageAndHoursContent = styled.div`
@@ -140,14 +140,7 @@ const DeleteMessageButton = styled(Menu.Item)`
   }
 `;
 
-const Messages = ({
-  data,
-  openSearch,
-  nickMe,
-  nickPerson,
-  openProfile,
-  remove,
-}) => {
+const Messages = ({ data, openSearch, user, openProfile, remove }) => {
   const isDay = dayjs(data.createdAt).isBefore(
     dayjs(dayjs().format('YYYY-MM-DD'))
   );
@@ -166,17 +159,17 @@ const Messages = ({
   return (
     <Container
       style={{
-        justifyContent: nickMe === nickPerson ? 'flex-end' : 'flex-start',
-        transform: nickMe === nickPerson ? 'scaleX(1)' : null,
+        justifyContent: data.user === user ? 'flex-end' : 'flex-start',
+        transform: data.user === user ? 'scaleX(1)' : null,
       }}
     >
       <RevertContainer
         style={{
-          transform: nickMe === nickPerson ? 'scaleX(-1)' : null,
+          transform: data.user === user ? 'scaleX(-1)' : null,
         }}
       >
         <ProfileContent>
-          {nickMe === nickPerson ? null : (
+          {data.user === user ? null : (
             <ProfileAvatarButton
               onClick={openProfile}
               disabled={openSearch === true}
@@ -185,7 +178,7 @@ const Messages = ({
           <Coner
             style={{
               borderBottom:
-                nickMe === nickPerson
+                data.user === user
                   ? ' 15px solid  #8570f3'
                   : ' 15px solid  #212121',
             }}
@@ -194,21 +187,21 @@ const Messages = ({
         <Dropdown overlay={deleteMessage} trigger={['click']}>
           <MessageContainer
             style={{
-              background: nickMe === nickPerson ? '#8774E1' : ' #212121',
+              background: data.user === user ? '#8774E1' : ' #212121',
             }}
           >
             <MessageContent
               style={{
-                transform: nickMe === nickPerson ? 'scaleX(-1)' : null,
+                transform: data.user === user ? 'scaleX(-1)' : null,
               }}
             >
               <DataAndNameContent>
-                {nickMe === nickPerson ? null : <NickName>{nickMe}</NickName>}
+                {user?.name === user ? null : <NickName>{data.user}</NickName>}
 
                 {isDay
                   ? dayjs(data.createdAt).format('DD/MM/') && (
                       <>
-                        {nickMe === nickPerson ? null : (
+                        {data.user === user ? null : (
                           <Data>
                             Date{' '}
                             {isDay
@@ -221,13 +214,7 @@ const Messages = ({
                   : null}
               </DataAndNameContent>
               <MessageAndHoursContent>
-                <MessageText
-                  style={{
-                    paddingTop: nickMe === nickPerson ? '10px' : null,
-                  }}
-                >
-                  {data.message}
-                </MessageText>
+                <MessageText>{data.message}</MessageText>
                 <Hours>{dayjs(data.createdAt).format('HH:mm')}</Hours>
               </MessageAndHoursContent>
             </MessageContent>
