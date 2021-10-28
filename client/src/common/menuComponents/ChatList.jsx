@@ -88,7 +88,7 @@ const Message = styled.span`
   font-weight: 550;
   color: #6e6c6c;
 `;
-const Friends = ({ openChat, data }) => {
+const ChatList = ({ openChat, data }) => {
   return (
     <ChatMenuButton onClick={openChat}>
       <ProfileAvatar size={52} style={{ width: '64px' }} src={ChatImage} />
@@ -107,4 +107,4 @@ const Friends = ({ openChat, data }) => {
     </ChatMenuButton>
   );
 };
-export default Friends;
+export default ChatList;

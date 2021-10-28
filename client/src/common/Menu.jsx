@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, Dropdown } from 'antd';
 import MenuOption from '../assets/icons/menu.png';
 import SearchChat from '../common/menuComponents/SearchChat';
@@ -12,8 +12,7 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
-import Friends from './menuComponents/Friends';
-import api from '../services/api';
+import ChatList from './menuComponents/ChatList';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -184,14 +183,11 @@ const MenuItem = styled(Menu.Item)`
   }
 `;
 
-const ChatMenu = ({ name, openChat, openChatMessage }) => {
+const ChatMenu = ({ name, openChat, openChatMessage, users }) => {
   const [search, setSearch] = useState('');
   const [openSettings, setOpenSettings] = useState(false);
   const [openEditProfile, setOpenEditProfile] = useState(false);
   const [searchPeople, setSearchPeople] = useState(false);
-  const [users, setUsers] = useState([]);
-  // eslint-disable-next-line
-  const [state, setState] = useState({});
 
   const settings = () => {
     setOpenSettings(prev => !prev);
@@ -244,22 +240,6 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
     </MenuOptions>
   );
 
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const { data } = await api.get('users');
-        setUsers(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchRepos();
-    return () => {
-      setState({}); // update an unmounted component
-    };
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <Container openChatMessage={openChatMessage}>
       {openSettings ? (
@@ -298,7 +278,7 @@ const ChatMenu = ({ name, openChat, openChatMessage }) => {
               </Head>
               <ChatListContainer>
                 {users.map((data, index) => (
-                  <Friends
+                  <ChatList
                     key={data.id + index.toString()}
                     data={data}
                     openChat={openChat}

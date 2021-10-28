@@ -271,9 +271,13 @@ const PickContent = styled(Menu)`
 //   },
 // };
 
-const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
+const ViewMessages = ({
+  openProfileInformation,
+  openSearch,
+  openProfile,
+  users,
+}) => {
   const [user, setUser] = useState('');
-  const [users, setUsers] = useState('');
   // eslint-disable-next-line
   const [state, setState] = useState({});
   const [messages, setMessages] = useState([]);
@@ -317,7 +321,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
     const newMessage = {
       message: sendMessage,
       userFrom: user._id,
-      userTo: users.map(get => get._id),
+      // userTo: users.map(get => get._id),
       id: Date.now(),
     };
     setMessages([...messages, newMessage]);
@@ -351,22 +355,6 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
       }
     };
     getUser();
-    return () => {
-      setState({}); // update an unmounted component
-    };
-    // eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const { data } = await api.get('users');
-        setUsers(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchRepos();
     return () => {
       setState({}); // update an unmounted component
     };
