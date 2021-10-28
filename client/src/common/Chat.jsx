@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router';
+
 import { Menu, Dropdown } from 'antd';
 import styled from 'styled-components';
 import TrashImg from '../assets/icons/trash.svg';
@@ -218,9 +218,6 @@ const Chat = ({ openChatMessage, closeChat }) => {
   const [openProfileInformation, setOpenProfileInformation] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
-  const location = useLocation();
-  const nick = location.state.user;
-
   const deleteChat = (
     <MenuOptions>
       <DeleteChatContent>
@@ -302,7 +299,6 @@ const Chat = ({ openChatMessage, closeChat }) => {
             <PersonProfile
               closeProfile={closeProfile}
               openProfileInformation={openProfileInformation}
-              nick={nick}
               openChatMessage={openChatMessage}
             />
 

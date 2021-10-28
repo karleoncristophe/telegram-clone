@@ -19,6 +19,7 @@ routes.get('/messages', authenticate, async (req, res) => {
 
 routes.post('/messages', async (req, res) => {
   const message = await Message.create(req.body);
+
   res.status(200).send(message);
 });
 

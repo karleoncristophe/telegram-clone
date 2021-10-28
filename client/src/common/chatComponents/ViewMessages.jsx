@@ -273,6 +273,9 @@ const PickContent = styled(Menu)`
 
 const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const [user, setUser] = useState('');
+  const [users, setUsers] = useState('');
+  // eslint-disable-next-line
+  const [state, setState] = useState({});
   const [messages, setMessages] = useState([]);
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
@@ -313,7 +316,8 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   const submit = async () => {
     const newMessage = {
       message: sendMessage,
-      userFrom: user?._id,
+      userFrom: user._id,
+      userTo: users.map(get => get._id),
       id: Date.now(),
     };
     setMessages([...messages, newMessage]);
@@ -338,7 +342,7 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
   }, [socket]);
 
   useEffect(() => {
-    const fetchRepos = async () => {
+    const getUser = async () => {
       try {
         const { data } = await api.get('me');
         setUser(data);
@@ -346,7 +350,27 @@ const ViewMessages = ({ openProfileInformation, openSearch, openProfile }) => {
         console.log(error);
       }
     };
+    getUser();
+    return () => {
+      setState({}); // update an unmounted component
+    };
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      try {
+        const { data } = await api.get('users');
+        setUsers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchRepos();
+    return () => {
+      setState({}); // update an unmounted component
+    };
+    // eslint-disable-next-line
   }, []);
 
   // useEffect(() => {
