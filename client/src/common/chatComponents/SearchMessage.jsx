@@ -264,7 +264,8 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
         return get.message
           .toLowerCase()
           .includes(messageSearch.toLocaleLowerCase());
-        // get.user.toLowerCase().includes(messageSearch.toLocaleLowerCase())
+        //   ||
+        // get.userFrom.toLowerCase().includes(messageSearch.toLocaleLowerCase())
       })
     );
   }, [messageSearch, messages]);
@@ -274,6 +275,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
       try {
         const { data } = await api.get('messages');
         setMessages(data);
+        console.log(data.message);
       } catch (error) {
         console.log(error);
       }
@@ -316,7 +318,7 @@ const SearchMessage = ({ close, openSearch, openChatMessage }) => {
                   <ProfileAvatar />
                   <ProfileInformation>
                     <NameViewAndHour>
-                      <Name>Teste</Name>
+                      <Name>{item.userFrom}</Name>
                     </NameViewAndHour>
                     <Message>{item.message}</Message>
                   </ProfileInformation>

@@ -12,19 +12,28 @@ const HomePageContainer = styled.div`
   background: #181818;
 `;
 
+const ChatIntro = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #000000;
+  border-top: none;
+  width: 65%;
+  position: relative;
+  background: #0e0d0d;
+  background-size: cover;
+
+  @media (max-width: 911px) {
+    display: none;
+  }
+`;
+
 function HomePage() {
-  const [openChatMessage, setOpenChatMessage] = useState(false);
   const [users, setUsers] = useState([]);
+  const [activeChat, setActiveChat] = useState(users.map(get => get._id));
   // eslint-disable-next-line
   const [state, setState] = useState({});
-
-  const openChat = () => {
-    setOpenChatMessage(true);
-  };
-
-  const closeChat = () => {
-    setOpenChatMessage(false);
-  };
+  console.log(activeChat);
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -45,17 +54,24 @@ function HomePage() {
   return (
     <HomePageContainer>
       <Menu
-        openChat={openChat}
-        openChatMessage={openChatMessage}
+        openChat={activeChat?._id}
+        setActiveChat={setActiveChat}
+        openChatMessage={activeChat?._id}
+        activeChat={activeChat}
         users={users}
       />
-
-      <Chat
-        users={users}
-        closeChat={closeChat}
-        openChat={openChat}
-        openChatMessage={openChatMessage}
-      />
+      <>
+        {activeChat?._id !== undefined && (
+          <Chat
+            active={activeChat?._id}
+            user={activeChat?._id}
+            userName={activeChat?.name}
+            closeChat={() => setActiveChat(false)}
+            openChatMessage={() => setActiveChat(true)}
+          />
+        )}
+        {activeChat?._id === undefined && <ChatIntro activeChat={activeChat} />}
+      </>
     </HomePageContainer>
   );
 }

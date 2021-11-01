@@ -216,6 +216,7 @@ const PersonProfile = ({
   closeProfile,
   openProfileInformation,
   openChatMessage,
+  userName,
 }) => {
   // const [visible, setVisible] = useState(false);
   // eslint-disable-next-line
@@ -261,7 +262,7 @@ const PersonProfile = ({
             <PersonNameAndBioButon>
               <PersonInformationImage src={ImgArroba} />
               <PersonNameAndBioContent>
-                <PersonNameAndBio>José</PersonNameAndBio>
+                <PersonNameAndBio>{userName}</PersonNameAndBio>
               </PersonNameAndBioContent>
             </PersonNameAndBioButon>
             <PersonNameAndBioButon>

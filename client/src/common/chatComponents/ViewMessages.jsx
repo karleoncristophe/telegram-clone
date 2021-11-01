@@ -276,6 +276,7 @@ const ViewMessages = ({
   openSearch,
   openProfile,
   users,
+  userName,
 }) => {
   const [user, setUser] = useState('');
   // eslint-disable-next-line
@@ -283,6 +284,9 @@ const ViewMessages = ({
   const [messages, setMessages] = useState([]);
   const [sendMessage, setSendMessage] = useState('');
   const [chosenEmoji, setChosenEmoji] = useState(null, false);
+
+  const myName = user._id;
+  const personName = users;
   // const [loading, setLoading] = useState(false);
 
   const openEmojiPicker = () => {
@@ -320,13 +324,13 @@ const ViewMessages = ({
   const submit = async () => {
     const newMessage = {
       message: sendMessage,
-      userFrom: user._id,
-      // userTo: users.map(get => get._id),
+      userFrom: myName,
+      userTo: personName,
       id: Date.now(),
     };
     setMessages([...messages, newMessage]);
 
-    socket.emit('message', newMessage);
+    socket.emit('message', 'room', newMessage);
     clearInput();
   };
 
@@ -342,6 +346,7 @@ const ViewMessages = ({
     socket.on('messages', args => {
       setMessages(args);
     });
+
     // eslint-disable-next-line
   }, [socket]);
 
@@ -380,7 +385,8 @@ const ViewMessages = ({
               <Messages
                 key={data.id + index.toString()}
                 data={data}
-                user={user}
+                myName={myName}
+                personName={userName}
                 openProfile={openProfile}
                 openSearch={openSearch}
               />

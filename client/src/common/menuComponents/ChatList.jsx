@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { Avatar } from 'antd';
 import ViewImg from '../../assets/icons/viewblack.png';
-const ChatImage =
-  'https://t3.ftcdn.net/jpg/03/02/41/08/240_F_302410851_oPS6nnVa0e2bexWL9vVR85kcha5uLkuz.jpg';
+import UserImage from '../../assets/icons/user.png';
 
 const ChatMenuButton = styled.button`
   display: flex;
@@ -15,17 +14,13 @@ const ChatMenuButton = styled.button`
   outline: none;
   border: none;
   margin-top: 2px;
-
+  background: ${props => (props.active ? '#8774e1' : '')};
   @media (max-width: 1202px) {
     width: 96% !important;
   }
 
   &:hover {
     background: #292929;
-  }
-
-  &:focus {
-    background: #8774e1;
   }
 
   @media (max-width: 908px) {
@@ -88,10 +83,10 @@ const Message = styled.span`
   font-weight: 550;
   color: #6e6c6c;
 `;
-const ChatList = ({ openChat, data }) => {
+const ChatList = ({ openChat, data, active }) => {
   return (
-    <ChatMenuButton onClick={openChat}>
-      <ProfileAvatar size={52} style={{ width: '64px' }} src={ChatImage} />
+    <ChatMenuButton onClick={openChat} active={active}>
+      <ProfileAvatar size={52} style={{ width: '64px' }} src={UserImage} />
       <ProfileInformation>
         <NameViewAndHourContent>
           <Name>{data?.name}</Name>

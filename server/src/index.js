@@ -19,23 +19,28 @@ app.use('/files', express.static(path.resolve(__dirname, 'tmp', 'uploads')));
 app.use(require('../src/routes/routes'));
 
 const server = app.listen(port, () => {
-   console.log(`Example app listening at localhost:${port}`);
+  console.log(`Example app listening at localhost:${port}`);
 });
 
 const io = socket(server, {
-   cors: {
-      origins: webMobile || webLocal,
-      methods: ['GET', 'POST'],
-   },
+  cors: {
+    origins: webMobile || webLocal,
+    methods: ['GET', 'POST'],
+  },
 });
 
 io.on('connection', async socket => {
-   const messages = await Message.find();
-   socket.emit('messages', messages);
+  const messages = await Message.find();
+  socket.emit('messages', messages);
+  socket.on('message', async args => {
+    await Message.create(args);
+    const messages = await Message.find();
+    socket.emit('messages', messages);
+  });
+});
 
-   socket.on('message', async args => {
-      await Message.create(args);
-      const messages = await Message.find();
-      socket.broadcast.emit('messages', messages);
-   });
+io.sockets.on('connection', function (socket) {
+  socket.on('create', function (room) {
+    socket.join(room);
+  });
 });

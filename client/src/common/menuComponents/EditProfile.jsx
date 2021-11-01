@@ -359,8 +359,9 @@ const EditProfile = ({ openEdit }) => {
   const [imageModal, setImageModal] = useState(true);
   const [image, setImage] = useState('');
   // eslint-disable-next-line
-  const [getImage, setGetImage] = useState();
-
+  const [getImage, setGetImage] = useState('');
+  // eslint-disable-next-line
+  const [state, setState] = useState({});
   const uploadImage = async e => {
     e.preventDefault();
     openEdit();
@@ -416,6 +417,9 @@ const EditProfile = ({ openEdit }) => {
       }
     };
     fetchRepos();
+    return () => {
+      setState({}); // update an unmounted component
+    };
     // eslint-disable-next-line
   }, []);
 
@@ -423,6 +427,9 @@ const EditProfile = ({ openEdit }) => {
     setName(`${user.name}`);
     setBio(`${user.bio}`);
     setUserName(`${user.username}`);
+    return () => {
+      setState({}); // update an unmounted component
+    };
   }, [user]);
 
   useEffect(() => {
@@ -433,6 +440,9 @@ const EditProfile = ({ openEdit }) => {
       setGetImage(data);
     };
     getImage();
+    return () => {
+      setState({}); // update an unmounted component
+    };
   }, []);
 
   useEffect(() => {
@@ -445,6 +455,9 @@ const EditProfile = ({ openEdit }) => {
       }
     };
     fetchRepos();
+    return () => {
+      setState({}); // update an unmounted component
+    };
   }, []);
 
   return (

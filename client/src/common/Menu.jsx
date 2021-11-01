@@ -26,7 +26,8 @@ const Container = styled.div`
 
   @media (max-width: 911px) {
     width: 100%;
-    display: ${props => (props.openChatMessage ? 'none' : 'flex')};
+    display: ${props =>
+      props.openChatMessage === undefined ? 'flex' : 'none'};
   }
 `;
 
@@ -183,7 +184,13 @@ const MenuItem = styled(Menu.Item)`
   }
 `;
 
-const ChatMenu = ({ name, openChat, openChatMessage, users }) => {
+const ChatMenu = ({
+  setActiveChat,
+  activeChat,
+  openChat,
+  openChatMessage,
+  users,
+}) => {
   const [search, setSearch] = useState('');
   const [openSettings, setOpenSettings] = useState(false);
   const [openEditProfile, setOpenEditProfile] = useState(false);
@@ -253,7 +260,12 @@ const ChatMenu = ({ name, openChat, openChatMessage, users }) => {
       ) : (
         <>
           {searchPeople ? (
-            <SearchChat closeSearch={closeSearch} openChat={openChat} />
+            <SearchChat
+              closeSearch={closeSearch}
+              openChat={openChat}
+              setActiveChat={setActiveChat}
+              users={users}
+            />
           ) : (
             <>
               <Head>
@@ -277,11 +289,12 @@ const ChatMenu = ({ name, openChat, openChatMessage, users }) => {
                 </OptionsAndSearchContent>
               </Head>
               <ChatListContainer>
-                {users.map((data, index) => (
+                {users.map((data, key) => (
                   <ChatList
-                    key={data.id + index.toString()}
+                    key={key}
+                    active={activeChat._id === users[key]._id}
                     data={data}
-                    openChat={openChat}
+                    openChat={() => setActiveChat(users[key])}
                   />
                 ))}
               </ChatListContainer>

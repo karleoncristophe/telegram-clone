@@ -140,7 +140,15 @@ const DeleteMessageButton = styled(Menu.Item)`
   }
 `;
 
-const Messages = ({ data, openSearch, user, openProfile, remove }) => {
+const Messages = ({
+  myName,
+  personName,
+  data,
+  openSearch,
+  user,
+  openProfile,
+  remove,
+}) => {
   const isDay = dayjs(data.createdAt).isBefore(
     dayjs(dayjs().format('YYYY-MM-DD'))
   );
@@ -159,17 +167,17 @@ const Messages = ({ data, openSearch, user, openProfile, remove }) => {
   return (
     <Container
       style={{
-        justifyContent: data.user === user ? 'flex-end' : 'flex-start',
-        transform: data.user === user ? 'scaleX(1)' : null,
+        justifyContent: personName === myName ? 'flex-end' : 'flex-start',
+        transform: personName === myName ? 'scaleX(1)' : null,
       }}
     >
       <RevertContainer
         style={{
-          transform: data.user === user ? 'scaleX(-1)' : null,
+          transform: personName === myName ? 'scaleX(-1)' : null,
         }}
       >
         <ProfileContent>
-          {data.user === user ? null : (
+          {personName === myName ? null : (
             <ProfileAvatarButton
               onClick={openProfile}
               disabled={openSearch === true}
@@ -178,7 +186,7 @@ const Messages = ({ data, openSearch, user, openProfile, remove }) => {
           <Coner
             style={{
               borderBottom:
-                data.user === user
+                personName === myName
                   ? ' 15px solid  #8570f3'
                   : ' 15px solid  #212121',
             }}
@@ -187,21 +195,23 @@ const Messages = ({ data, openSearch, user, openProfile, remove }) => {
         <Dropdown overlay={deleteMessage} trigger={['click']}>
           <MessageContainer
             style={{
-              background: data.user === user ? '#8774E1' : ' #212121',
+              background: personName === myName ? '#8774E1' : ' #212121',
             }}
           >
             <MessageContent
               style={{
-                transform: data.user === user ? 'scaleX(-1)' : null,
+                transform: personName === myName ? 'scaleX(-1)' : null,
               }}
             >
               <DataAndNameContent>
-                {user?.name === user ? null : <NickName>{data.user}</NickName>}
+                {myName === personName ? null : (
+                  <NickName>{personName}</NickName>
+                )}
 
                 {isDay
                   ? dayjs(data.createdAt).format('DD/MM/') && (
                       <>
-                        {data.user === user ? null : (
+                        {personName === myName ? null : (
                           <Data>
                             Date{' '}
                             {isDay

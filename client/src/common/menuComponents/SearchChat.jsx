@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import api from '../../services/api';
 import UserImage from '../../assets/icons/user.png';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 
@@ -204,8 +203,7 @@ const NickName = styled.span`
   color: #6e6c6c;
 `;
 
-const SearchChat = ({ closeSearch, openChat }) => {
-  const [users, setUsers] = useState([]);
+const SearchChat = ({ users, closeSearch, setActiveChat }) => {
   const [searchUsers, setSearchUsers] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
 
@@ -223,19 +221,6 @@ const SearchChat = ({ closeSearch, openChat }) => {
       })
     );
   }, [searchUsers, users]);
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const { data } = await api.get('users');
-        setUsers(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchRepos();
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <Container>
@@ -256,16 +241,16 @@ const SearchChat = ({ closeSearch, openChat }) => {
       <MainProfileContent>
         {searchUsers.length !== 0 && (
           <>
-            {filteredUsers.map((item, index) => (
+            {filteredUsers.map((data, key) => (
               <ChatMenuButton
-                key={item.id + index.toString()}
-                onClick={openChat}
+                key={key}
+                onClick={() => setActiveChat(filteredUsers[key])}
               >
                 <ProfileAvatar />
 
                 <ProfileInformation>
-                  <Name>{item.name}</Name>
-                  <NickName>{item.username}</NickName>
+                  <Name>{data.name}</Name>
+                  <NickName>{data.username}</NickName>
                 </ProfileInformation>
               </ChatMenuButton>
             ))}

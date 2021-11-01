@@ -214,7 +214,7 @@ const LeftArowImage = styled(ArrowLeftOutlined)`
   font-size: 1.25rem;
 `;
 
-const Chat = ({ openChatMessage, closeChat }) => {
+const Chat = ({ openChatMessage, closeChat, user, userName }) => {
   const [openProfileInformation, setOpenProfileInformation] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -248,68 +248,69 @@ const Chat = ({ openChatMessage, closeChat }) => {
 
   return (
     <Container openChatMessage={openChatMessage}>
-      {openChatMessage ? (
-        <ChatBackground>
-          <ChatContent
+      <ChatBackground>
+        <ChatContent
+          openProfileInformation={openProfileInformation}
+          openSearch={openSearch}
+        >
+          <Header>
+            <ProfileContent>
+              <LeftArowButton onClick={closeChat}>
+                <LeftArowImage />
+              </LeftArowButton>
+              <ProfileContentButton
+                onClick={openProfile}
+                disabled={openSearch === true}
+              >
+                <ProfileAvatar src={ChatImage} />
+              </ProfileContentButton>
+              <ProfileInformationContent>
+                <ProfileName>{userName}</ProfileName>
+                <ProfileView>last seen recently</ProfileView>
+              </ProfileInformationContent>
+            </ProfileContent>
+            <SearchAndMenuContent>
+              <SearchMessageButton
+                onClick={openMessageFinder}
+                disabled={openProfileInformation === true}
+              >
+                <ImageSearch />
+              </SearchMessageButton>
+              <Dropdown
+                overlay={deleteChat}
+                placement="bottomRight"
+                overlayStyle={{ background: 'none' }}
+              >
+                <MoreOptions>
+                  <ImageMenu />
+                </MoreOptions>
+              </Dropdown>
+            </SearchAndMenuContent>
+          </Header>
+
+          <ViewMessages
+            users={user}
+            userName={userName}
+            openProfile={openProfile}
             openProfileInformation={openProfileInformation}
             openSearch={openSearch}
-          >
-            <Header>
-              <ProfileContent>
-                <LeftArowButton onClick={closeChat}>
-                  <LeftArowImage />
-                </LeftArowButton>
-                <ProfileContentButton
-                  onClick={openProfile}
-                  disabled={openSearch === true}
-                >
-                  <ProfileAvatar src={ChatImage} />
-                </ProfileContentButton>
-                <ProfileInformationContent>
-                  <ProfileName>Chat</ProfileName>
-                  <ProfileView>last seen recently</ProfileView>
-                </ProfileInformationContent>
-              </ProfileContent>
-              <SearchAndMenuContent>
-                <SearchMessageButton
-                  onClick={openMessageFinder}
-                  disabled={openProfileInformation === true}
-                >
-                  <ImageSearch />
-                </SearchMessageButton>
-                <Dropdown
-                  overlay={deleteChat}
-                  placement="bottomRight"
-                  overlayStyle={{ background: 'none' }}
-                >
-                  <MoreOptions>
-                    <ImageMenu />
-                  </MoreOptions>
-                </Dropdown>
-              </SearchAndMenuContent>
-            </Header>
+          />
+        </ChatContent>
+        <>
+          <PersonProfile
+            userName={userName}
+            closeProfile={closeProfile}
+            openProfileInformation={openProfileInformation}
+            openChatMessage={openChatMessage}
+          />
 
-            <ViewMessages
-              openProfile={openProfile}
-              openProfileInformation={openProfileInformation}
-              openSearch={openSearch}
-            />
-          </ChatContent>
-          <>
-            <PersonProfile
-              closeProfile={closeProfile}
-              openProfileInformation={openProfileInformation}
-              openChatMessage={openChatMessage}
-            />
-
-            <SearchMessage
-              openSearch={openSearch}
-              close={closeMessageFinder}
-              openChatMessage={openChatMessage}
-            />
-          </>
-        </ChatBackground>
-      ) : null}
+          <SearchMessage
+            openSearch={openSearch}
+            close={closeMessageFinder}
+            openChatMessage={openChatMessage}
+          />
+        </>
+      </ChatBackground>
     </Container>
   );
 };
