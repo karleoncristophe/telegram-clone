@@ -28,12 +28,18 @@ const ChatMenuButton = styled.button`
   }
 `;
 
-const ProfileAvatar = styled(Avatar)`
-  margin-left: 5px;
+const ProfileAvatarContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-  @media (max-width: 1202px) {
-    width: 4.12rem;
-  }
+const ProfileAvatar = styled(Avatar)`
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: url(${UserImage});
+  background-size: cover;
 `;
 
 const ProfileInformation = styled.div`
@@ -86,7 +92,10 @@ const Message = styled.span`
 const ChatList = ({ openChat, data, active }) => {
   return (
     <ChatMenuButton onClick={openChat} active={active}>
-      <ProfileAvatar size={52} style={{ width: '64px' }} src={UserImage} />
+      <ProfileAvatarContent>
+        <ProfileAvatar />
+      </ProfileAvatarContent>
+
       <ProfileInformation>
         <NameViewAndHourContent>
           <Name>{data?.name}</Name>
