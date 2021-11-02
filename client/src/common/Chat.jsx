@@ -214,7 +214,7 @@ const LeftArowImage = styled(ArrowLeftOutlined)`
   font-size: 1.25rem;
 `;
 
-const Chat = ({ openChatMessage, closeChat, user, userName }) => {
+const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
   const [openProfileInformation, setOpenProfileInformation] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -299,6 +299,7 @@ const Chat = ({ openChatMessage, closeChat, user, userName }) => {
         <>
           <PersonProfile
             userName={userName}
+            userBio={userBio}
             closeProfile={closeProfile}
             openProfileInformation={openProfileInformation}
             openChatMessage={openChatMessage}

@@ -217,6 +217,7 @@ const PersonProfile = ({
   openProfileInformation,
   openChatMessage,
   userName,
+  userBio,
 }) => {
   // const [visible, setVisible] = useState(false);
   // eslint-disable-next-line
@@ -269,7 +270,7 @@ const PersonProfile = ({
               <PersonInformationImage src={ImgInformation} />
               <PersonNameAndBioContent>
                 <PersonNameAndBio>
-                  Be the change you wish to see in the world.
+                  {userBio === undefined ? 'No biography.' : `${userBio}`}
                 </PersonNameAndBio>
               </PersonNameAndBioContent>
             </PersonNameAndBioButon>

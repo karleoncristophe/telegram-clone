@@ -66,6 +66,7 @@ function HomePage() {
             active={activeChat?._id}
             user={activeChat?._id}
             userName={activeChat?.name}
+            userBio={activeChat?.bio}
             closeChat={() => setActiveChat(false)}
             openChatMessage={() => setActiveChat(true)}
           />
