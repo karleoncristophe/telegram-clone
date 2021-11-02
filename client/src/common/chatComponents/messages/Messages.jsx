@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { Menu, Dropdown } from 'antd';
-import UserImage from '../../assets/icons/user.png';
+import UserImage from '../../../assets/icons/user.png';
 import { RestOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-
   margin-top: 4px;
 `;
 

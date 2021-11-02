@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import io from 'socket.io-client';
-import ImgEmoji from '../../assets/icons/emoji.png';
-import ImgAirplane from '../../assets/icons/sendmessage.png';
-import Messages from './Messages';
+import ImgEmoji from '../../../assets/icons/emoji.png';
+import ImgAirplane from '../../../assets/icons/sendmessage.png';
 import Picker from 'emoji-picker-react';
 // import Lottie from 'react-lottie';
 // import * as location from '../../assets/icons/1055-world-locations.json';
@@ -13,8 +12,9 @@ import {
   PaperClipOutlined,
   SendOutlined,
 } from '@ant-design/icons';
-import UploadImage from './UploadImage';
-import api from '../../services/api';
+import UploadImage from '../UploadImage';
+import api from '../../../services/api';
+import Messages from './Messages';
 
 const socket = io('http://192.168.0.107:4000');
 
@@ -98,8 +98,10 @@ const ViewMessageContent = styled.div`
 const ViewMessage = styled.div`
   display: flex;
   flex-direction: column;
+
   width: ${props =>
     props.openProfileInformation || props.openSearch ? '98%' : '60%'};
+
   transition: ${props =>
     props.openProfileInformation || props.openSearch ? '0.2s' : '0.2s'};
 
@@ -194,7 +196,6 @@ const MenuClipButton = styled(Dropdown)`
   background: transparent;
   margin-right: 10px;
   border-radius: 50%;
-
   height: 38px;
   width: 45px;
 
@@ -211,7 +212,6 @@ const MenuClipButton = styled(Dropdown)`
 const RecordContent = styled.div`
   display: flex;
   position: relative;
-
   margin-left: 8px;
 `;
 

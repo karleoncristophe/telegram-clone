@@ -10,7 +10,7 @@ import {
   MoreOutlined,
   ArrowLeftOutlined,
 } from '@ant-design/icons';
-import ViewMessages from './chatComponents/ViewMessages';
+import ViewMessages from '../common/chatComponents/messages/ViewMessages';
 import UserImage from '../assets/icons/user.png';
 
 const Container = styled.div`
