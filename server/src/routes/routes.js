@@ -118,11 +118,11 @@ routes.delete('/deleteUser/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const user = await User.findOneAndDelete({ _id: id });
-    res.status(200).send({
-      message: 'User deleted successfully!',
-    });
-    console.log(user);
+    const user = await User.findById({ _id: id });
+
+    await user.remove();
+
+    return res.status(200).send({ message: 'Deleted user.' });
   } catch (error) {
     res.status(400).send({
       error: ' User was not deleted successfully!',
