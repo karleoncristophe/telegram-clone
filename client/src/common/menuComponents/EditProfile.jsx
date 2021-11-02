@@ -425,7 +425,7 @@ const EditProfile = ({ openEdit }) => {
 
   useEffect(() => {
     setName(`${user.name}`);
-    setBio(`${user.bio}`);
+    setBio(user.bio === undefined || '' ? 'No biography.' : `${user.bio}`);
     setUserName(`${user.username}`);
     return () => {
       setState({}); // update an unmounted component

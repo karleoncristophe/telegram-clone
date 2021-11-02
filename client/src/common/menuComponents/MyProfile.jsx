@@ -293,7 +293,10 @@ const MyProfile = ({ settings, openEdit }) => {
       <AvatarContent style={{ height: '250px' }}>
         <ProfileNameContent>
           <ProfileName>{user?.name}</ProfileName>
-          <ProfileBio>Bio: {user?.bio}</ProfileBio>
+          <ProfileBio>
+            Bio:{' '}
+            {user?.bio === undefined || '' ? 'No biography.' : `${user?.bio}`}
+          </ProfileBio>
         </ProfileNameContent>
       </AvatarContent>
       <EditProfileContent>
