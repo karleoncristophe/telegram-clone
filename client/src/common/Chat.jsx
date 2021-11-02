@@ -11,6 +11,7 @@ import {
   ArrowLeftOutlined,
 } from '@ant-design/icons';
 import ViewMessages from './chatComponents/ViewMessages';
+import UserImage from '../assets/icons/user.png';
 
 const Container = styled.div`
   display: flex;
@@ -72,9 +73,11 @@ const ProfileContentButton = styled.button`
   background: none;
 `;
 
-const ProfileAvatar = styled.img`
+const ProfileAvatar = styled.div`
   width: 100%;
   height: 100%;
+  background: url(${UserImage});
+  background-size: cover;
   border-radius: 50%;
 `;
 
@@ -243,9 +246,6 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
     setOpenSearch(false);
   };
 
-  const ChatImage =
-    'https://t3.ftcdn.net/jpg/03/02/41/08/240_F_302410851_oPS6nnVa0e2bexWL9vVR85kcha5uLkuz.jpg';
-
   return (
     <Container openChatMessage={openChatMessage}>
       <ChatBackground>
@@ -262,7 +262,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
                 onClick={openProfile}
                 disabled={openSearch === true}
               >
-                <ProfileAvatar src={ChatImage} />
+                <ProfileAvatar />
               </ProfileContentButton>
               <ProfileInformationContent>
                 <ProfileName>{userName}</ProfileName>
