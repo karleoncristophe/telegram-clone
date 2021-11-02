@@ -2,9 +2,9 @@ import { useState } from 'react';
 import styled from 'styled-components';
 // import { Modal, Button } from 'antd';
 import ImgArroba from '../../assets/icons/arroba.png';
-import ImgInformation from '../../assets/icons/information.png';
+
 import PersonUser from '../../assets/icons/personUser.png';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 const Container = styled.div`
   height: 100%;
@@ -127,8 +127,14 @@ const PersonNameAndBioButon = styled.button`
     transition: 1s;
   }
 `;
-const PersonInformationImage = styled.img`
+const PersonInformationArroba = styled.img`
   height: 22px;
+  color: #707579;
+`;
+
+const PersonInformationExclamation = styled(ExclamationCircleOutlined)`
+  font-size: 1.37rem;
+  color: #707579;
 `;
 const PersonNameAndBioContent = styled.div`
   display: flex;
@@ -260,13 +266,13 @@ const PersonProfile = ({
           <PersonAvatarContent>
             <PersonInformation></PersonInformation>
             <PersonNameAndBioButon>
-              <PersonInformationImage src={ImgArroba} />
+              <PersonInformationArroba src={ImgArroba} />
               <PersonNameAndBioContent>
                 <PersonNameAndBio>{data?.username}</PersonNameAndBio>
               </PersonNameAndBioContent>
             </PersonNameAndBioButon>
             <PersonNameAndBioButon>
-              <PersonInformationImage src={ImgInformation} />
+              <PersonInformationExclamation />
               <PersonNameAndBioContent>
                 <PersonNameAndBio>
                   {data?.bio === undefined ? 'No biography.' : `${data?.bio}`}
