@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import io from 'socket.io-client';
 import ImgEmoji from '../../../assets/icons/emoji.png';
-import ImgAirplane from '../../../assets/icons/sendmessage.png';
 import Picker from 'emoji-picker-react';
 // import Lottie from 'react-lottie';
 // import * as location from '../../assets/icons/1055-world-locations.json';
@@ -452,7 +451,7 @@ const ViewMessages = ({
                   }}
                 />
               )}
-              {sendMessage.length !== 0 && <Airplane src={ImgAirplane} />}
+              {sendMessage.length !== 0 && <Airplane />}
             </SendMessageButton>
           </RecordContent>
         </Items>

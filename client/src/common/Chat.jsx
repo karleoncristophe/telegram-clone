@@ -2,13 +2,14 @@ import { useState } from 'react';
 
 import { Menu, Dropdown } from 'antd';
 import styled from 'styled-components';
-import TrashImg from '../assets/icons/trash.svg';
+
 import PersonProfile from './chatComponents/PersonProfile';
 import SearchMessage from './chatComponents/SearchMessage';
 import {
   SearchOutlined,
   MoreOutlined,
   ArrowLeftOutlined,
+  DeleteOutlined,
 } from '@ant-design/icons';
 import ViewMessages from '../common/chatComponents/messages/ViewMessages';
 import UserImage from '../assets/icons/user.png';
@@ -179,8 +180,9 @@ const DeleteChat = styled.span`
   font-size: 1.1rem;
 `;
 
-const Trash = styled.img`
-  height: 50%;
+const Trash = styled(DeleteOutlined)`
+  font-size: 1.1rem;
+  color: #ec5b5b;
 `;
 
 const MenuOptions = styled(Menu)`
@@ -224,7 +226,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, data }) => {
   const deleteChat = (
     <MenuOptions>
       <DeleteChatContent>
-        <Trash src={TrashImg} />
+        <Trash />
         <DeleteChat>Delete Chat</DeleteChat>
       </DeleteChatContent>
     </MenuOptions>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { Menu, Dropdown } from 'antd';
-import MenuOption from '../assets/icons/menu.png';
 import SearchChat from '../common/menuComponents/SearchChat';
 import EditProfile from '../common/menuComponents/EditProfile';
 import MyProfile from '../common/menuComponents/MyProfile';
@@ -272,7 +271,7 @@ const ChatMenu = ({
                 <OptionsAndSearchContent>
                   <DropdownContent overlay={menu} trigger={['click']}>
                     <Options>
-                      <ImageMenu src={MenuOption} />
+                      <ImageMenu />
                     </Options>
                   </DropdownContent>
 
