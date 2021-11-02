@@ -114,7 +114,7 @@ routes.post('/login', async (req, res) => {
   });
 });
 
-routes.delete('/users/:id', async (req, res) => {
+routes.delete('/deleteUser/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
