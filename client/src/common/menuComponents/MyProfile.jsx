@@ -231,6 +231,7 @@ const MyProfile = ({ settings, openEdit }) => {
   const [visible, setVisible] = useState(false);
   // eslint-disable-next-line
   const [state, setState] = useState({});
+
   const modalVisible = () => {
     setVisible(true);
   };
