@@ -217,7 +217,7 @@ const LeftArowImage = styled(ArrowLeftOutlined)`
   font-size: 1.25rem;
 `;
 
-const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
+const Chat = ({ userBio, openChatMessage, closeChat, user, data }) => {
   const [openProfileInformation, setOpenProfileInformation] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -265,7 +265,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
                 <ProfileAvatar />
               </ProfileContentButton>
               <ProfileInformationContent>
-                <ProfileName>{userName}</ProfileName>
+                <ProfileName>{data.name}</ProfileName>
                 <ProfileView>last seen recently</ProfileView>
               </ProfileInformationContent>
             </ProfileContent>
@@ -290,7 +290,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
 
           <ViewMessages
             users={user}
-            userName={userName}
+            dataInformatios={data}
             openProfile={openProfile}
             openProfileInformation={openProfileInformation}
             openSearch={openSearch}
@@ -298,8 +298,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, userName }) => {
         </ChatContent>
         <>
           <PersonProfile
-            userName={userName}
-            userBio={userBio}
+            data={data}
             closeProfile={closeProfile}
             openProfileInformation={openProfileInformation}
             openChatMessage={openChatMessage}

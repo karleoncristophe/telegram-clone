@@ -145,7 +145,6 @@ const Messages = ({
   personName,
   data,
   openSearch,
-  user,
   openProfile,
   remove,
 }) => {

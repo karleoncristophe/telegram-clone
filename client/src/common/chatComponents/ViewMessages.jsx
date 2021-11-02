@@ -276,7 +276,7 @@ const ViewMessages = ({
   openSearch,
   openProfile,
   users,
-  userName,
+  dataInformatios,
 }) => {
   const [user, setUser] = useState('');
   // eslint-disable-next-line
@@ -386,7 +386,7 @@ const ViewMessages = ({
                 key={data.id + index.toString()}
                 data={data}
                 myName={myName}
-                personName={userName}
+                personName={dataInformatios.name}
                 openProfile={openProfile}
                 openSearch={openSearch}
               />
