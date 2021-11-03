@@ -33,7 +33,6 @@ function HomePage() {
   const [activeChat, setActiveChat] = useState(users.map(get => get._id));
   // eslint-disable-next-line
   const [state, setState] = useState({});
-  console.log(activeChat);
 
   useEffect(() => {
     const fetchRepos = async () => {
