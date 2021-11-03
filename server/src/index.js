@@ -38,9 +38,3 @@ io.on('connection', async socket => {
     socket.emit('messages', messages);
   });
 });
-
-io.sockets.on('connection', function (socket) {
-  socket.on('create', function (room) {
-    socket.join(room);
-  });
-});

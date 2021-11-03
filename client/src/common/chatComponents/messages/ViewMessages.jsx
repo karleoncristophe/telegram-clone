@@ -329,7 +329,7 @@ const ViewMessages = ({
     };
     setMessages([...messages, newMessage]);
 
-    socket.emit('message', 'room', newMessage);
+    socket.emit('message', newMessage);
     clearInput();
   };
 
