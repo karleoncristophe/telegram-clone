@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Avatar } from 'antd';
 import ViewImg from '../../assets/icons/viewblack.png';
 import UserImage from '../../assets/icons/user.png';
 
@@ -34,7 +33,7 @@ const ProfileAvatarContent = styled.div`
   align-items: center;
 `;
 
-const ProfileAvatar = styled(Avatar)`
+const ProfileAvatar = styled.div`
   height: 50px;
   width: 50px;
   border-radius: 50%;
