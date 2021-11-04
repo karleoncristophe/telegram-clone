@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import { Menu, Dropdown } from 'antd';
-import SearchChat from '../common/menuComponents/SearchChat';
-import EditProfile from '../common/menuComponents/EditProfile';
-import MyProfile from '../common/menuComponents/MyProfile';
+
 import {
   SettingOutlined,
   UserOutlined,
@@ -11,7 +8,13 @@ import {
   MenuOutlined,
   SearchOutlined,
 } from '@ant-design/icons';
+import { Menu, Dropdown } from 'antd';
+
+import SearchChat from '../common/menuComponents/SearchChat';
+import EditProfile from '../common/menuComponents/EditProfile';
+import MyProfile from '../common/menuComponents/MyProfile';
 import ChatList from './menuComponents/ChatList';
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+
 import ImgEmoji from '../../../assets/icons/emoji.png';
+
 import Picker from 'emoji-picker-react';
 // import Lottie from 'react-lottie';
 // import * as location from '../../assets/icons/1055-world-locations.json';
@@ -11,9 +13,11 @@ import {
   PaperClipOutlined,
   SendOutlined,
 } from '@ant-design/icons';
+
 import UploadImage from '../UploadImage';
-import api from '../../../services/api';
 import Messages from './Messages';
+
+import api from '../../../services/api';
 
 const socket = io('http://192.168.0.107:4000');
 
@@ -79,12 +83,6 @@ const MainScrollContent = styled.main`
       border-radius: 20px;
     }
   }
-
-  @media (max-width: 400px) {
-    margin: 10px;
-    height: 44px;
-    width: 97%;
-  }
 `;
 
 const ViewMessageContent = styled.div`
@@ -119,16 +117,15 @@ const ViewMessage = styled.div`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
+
   padding: 3px;
   width: 100%;
-  @media (max-width: 500px) {
-    padding: 1px;
-  }
 `;
 
 const Items = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 54px;
   margin: 10px;
   width: ${props =>
@@ -145,6 +142,10 @@ const Items = styled.div`
   @media (max-width: 1202px) {
     display: flex;
     width: 98%;
+  }
+
+  @media (max-width: 400px) {
+    height: 44px;
   }
 `;
 

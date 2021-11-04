@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+
 import Menu from '../common/Menu';
 import Chat from '../common/Chat';
+
 import api from '../services/api';
 
 const HomePageContainer = styled.div`

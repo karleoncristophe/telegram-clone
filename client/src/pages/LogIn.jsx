@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { message } from 'antd';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+
+import { Link, useHistory } from 'react-router-dom';
+
+import { message } from 'antd';
+
 import ImgLogo from '../assets/icons/telegramicon.svg';
+
 import api from '../services/api';
 
 const Container = styled.div`

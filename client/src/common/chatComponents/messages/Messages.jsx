@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+
 import dayjs from 'dayjs';
-import { Menu, Dropdown } from 'antd';
-import UserImage from '../../../assets/icons/user.png';
+
 import { RestOutlined } from '@ant-design/icons';
+import { Menu, Dropdown } from 'antd';
+
+import UserImage from '../../../assets/icons/user.png';
 
 const Container = styled.div`
   display: flex;

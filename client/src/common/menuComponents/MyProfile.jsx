@@ -1,12 +1,15 @@
-import { useState, useEffect } from 'react';
-import { MoreOutlined, ImportOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Modal } from 'antd';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { ArrowLeftOutlined, DeleteOutlined } from '@ant-design/icons';
+import { MoreOutlined, ImportOutlined } from '@ant-design/icons';
+import { Menu, Dropdown, Modal } from 'antd';
+
 import PencilImg from '../../assets/icons/pencil.svg';
 import UserImage from '../../assets/icons/user.png';
+
 import api from '../../services/api';
-import { ArrowLeftOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const ProfileContent = styled.div`
   background: #212121;

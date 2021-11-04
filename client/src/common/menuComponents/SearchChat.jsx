@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+
 import { SearchOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+
 import UserImage from '../../assets/icons/user.png';
 // import SearchPurpleImg from '../assets/icons/searchpurple.svg';
 

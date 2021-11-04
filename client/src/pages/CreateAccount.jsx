@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import { message } from 'antd';
 import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { message } from 'antd';
+
+import * as location from '../assets/icons/1055-world-locations.json';
 import ImgLogo from '../assets/icons/telegramicon.svg';
 import Lottie from 'react-lottie';
-import * as location from '../assets/icons/1055-world-locations.json';
+
 import api from '../services/api';
 
 const Container = styled.div`

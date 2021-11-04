@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
 // import { Modal, Button } from 'antd';
-import ImgArroba from '../../assets/icons/arroba.png';
-
-import PersonUser from '../../assets/icons/personUser.png';
 import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+
+import ImgArroba from '../../assets/icons/arroba.png';
+import PersonUser from '../../assets/icons/personUser.png';
 
 const Container = styled.div`
   height: 100%;

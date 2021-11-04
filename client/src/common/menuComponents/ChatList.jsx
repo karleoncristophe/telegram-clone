@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import ViewImg from '../../assets/icons/viewblack.png';
 import UserImage from '../../assets/icons/user.png';
 

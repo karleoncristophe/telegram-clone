@@ -1,7 +1,9 @@
+import styled from 'styled-components';
 import { useState } from 'react';
+
 import { Modal } from 'antd';
 import { PictureOutlined, FolderOutlined } from '@ant-design/icons';
-import styled from 'styled-components';
+
 import api from '../../services/api';
 
 const Container = styled.form`

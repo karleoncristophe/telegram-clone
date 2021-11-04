@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import CheckedImg from '../../assets/icons/checked.png';
-import { message, Modal } from 'antd';
-import { CameraOutlined } from '@ant-design/icons';
-import UserImage from '../../assets/icons/user.png';
-import api from '../../services/api';
+
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import { CameraOutlined } from '@ant-design/icons';
+import { message, Modal } from 'antd';
+
+import CheckedImg from '../../assets/icons/checked.png';
+import UserImage from '../../assets/icons/user.png';
+
+import api from '../../services/api';
 
 const Container = styled.div`
   display: flex;
