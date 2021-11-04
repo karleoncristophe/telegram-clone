@@ -68,6 +68,7 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, data }) => {
           openProfileInformation={openProfileInformation}
         >
           <Header
+            data={data}
             closeChat={closeChat}
             openSearch={openSearch}
             openProfile={openProfile}

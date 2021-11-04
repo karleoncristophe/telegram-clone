@@ -211,6 +211,7 @@ const MenuOptions = styled(Menu)`
 `;
 
 const Header = ({
+  data,
   closeChat,
   openSearch,
   openProfile,
@@ -238,7 +239,7 @@ const Header = ({
         />
 
         <ProfileInformationContent>
-          <ProfileName>karleon aaaaaaaa</ProfileName>
+          <ProfileName>{data?.name}</ProfileName>
           <ProfileView>last seen recently</ProfileView>
         </ProfileInformationContent>
       </ProfileContent>
