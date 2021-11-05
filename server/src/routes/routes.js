@@ -78,8 +78,6 @@ routes.put('/users/:id', authenticate, async (req, res) => {
     );
 
     res.status(200).send(updateData);
-
-    console.log(updateData);
   } catch (error) {
     res.status(403).send({
       error: 'Erro ao atualizar',
