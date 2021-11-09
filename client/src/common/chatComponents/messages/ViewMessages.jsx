@@ -330,7 +330,7 @@ const ViewMessages = ({
     };
     setMessages([...messages, newMessage]);
 
-    socket.emit('message', newMessage);
+    socket.emit('messages', newMessage);
     clearInput();
   };
 

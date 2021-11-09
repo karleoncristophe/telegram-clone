@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 import PersonProfile from './chatComponents/PersonProfile';
-import SearchMessage from './chatComponents/SearchMessage';
+// import SearchMessage from './chatComponents/SearchMessage';
 import ViewMessages from '../common/chatComponents/messages/ViewMessages';
 import Header from './chatComponents/Header';
 
@@ -56,9 +56,9 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, data }) => {
     setOpenSearch(true);
   };
 
-  const closeMessageFinder = () => {
-    setOpenSearch(false);
-  };
+  // const closeMessageFinder = () => {
+  //   setOpenSearch(false);
+  // };
 
   return (
     <Container openChatMessage={openChatMessage}>
@@ -90,12 +90,12 @@ const Chat = ({ userBio, openChatMessage, closeChat, user, data }) => {
             openChatMessage={openChatMessage}
             openProfileInformation={openProfileInformation}
           />
-
+          {/* 
           <SearchMessage
             openSearch={openSearch}
             close={closeMessageFinder}
             openChatMessage={openChatMessage}
-          />
+          /> */}
         </>
       </ChatBackground>
     </Container>
