@@ -50,6 +50,7 @@ routes.post('/users', async (req, res) => {
       username,
       name,
       email,
+
       password: hash,
     });
 
@@ -65,8 +66,13 @@ routes.post('/users', async (req, res) => {
 
 routes.put('/users/:id', authenticate, async (req, res) => {
   const { id } = req.params;
-  const { name, username, bio } = req.body;
-  const objects = { name: name, username: username, bio: bio };
+  const { name, username, bio, imageUrl } = req.body;
+  const objects = {
+    name: name,
+    username: username,
+    bio: bio,
+    imageUrl: imageUrl,
+  };
 
   try {
     const updateData = await User.findOneAndUpdate(
@@ -141,14 +147,13 @@ routes.post(
   multer(upload).single('file'),
   async (req, res) => {
     const { originalname: name, size, key, url = '' } = req.file;
-    const user = await User.findOne({ _id: req.logged });
+
     try {
       const image = await Image.create({
         name,
         size,
         key,
         url,
-        user,
       });
       res.status(201).send({
         image,

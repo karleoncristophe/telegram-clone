@@ -362,9 +362,27 @@ const EditProfile = ({ openEdit }) => {
   const [imageModal, setImageModal] = useState(true);
   const [image, setImage] = useState('');
   // eslint-disable-next-line
-  const [getImage, setGetImage] = useState([]);
-  // eslint-disable-next-line
   const [state, setState] = useState({});
+
+  const update = async () => {
+    const body = {
+      name: name,
+      bio: bio,
+      username: userName,
+    };
+
+    try {
+      const { data } = await api.put(`users/${user._id}`, body);
+      setUser(data);
+
+      message.success('Usuário Atualizado.');
+    } catch (error) {
+      console.log(error);
+    }
+
+    // openEdit();
+    setVisible(false);
+  };
 
   const uploadImage = async e => {
     e.preventDefault();
@@ -392,46 +410,11 @@ const EditProfile = ({ openEdit }) => {
     setImage('');
   };
 
-  const update = async () => {
-    const body = {
-      name: name,
-      bio: bio,
-      username: userName,
-    };
-
-    try {
-      const { data } = await api.put(`users/${user._id}`, body);
-      setUser(data);
-
-      message.success('Usuário Atualizado.');
-    } catch (error) {
-      console.log(error);
-    }
-
-    openEdit();
-    setVisible(false);
-  };
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      try {
-        const { data } = await api.get('me');
-        setUser(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchRepos();
-    return () => {
-      setState({}); // update an unmounted component
-    };
-    // eslint-disable-next-line
-  }, []);
-
   useEffect(() => {
     setName(`${user.name}`);
     setBio(user.bio === undefined || '' ? 'No biography.' : `${user.bio}`);
     setUserName(`${user.username}`);
+
     return () => {
       setState({}); // update an unmounted component
     };
@@ -442,6 +425,7 @@ const EditProfile = ({ openEdit }) => {
       try {
         const { data } = await api.get('me');
         setUser(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -469,7 +453,7 @@ const EditProfile = ({ openEdit }) => {
               <ChooseImageContent onSubmit={uploadImage}>
                 <Image
                   style={{
-                    background: `url('https://static.remove.bg/remove-bg-web/f50bd6ad4990ff621deccea155ab762c39d8c77a/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png')`,
+                    // background: `url(${user.imageUrl})`,
                     backgroundSize: 'cover',
                   }}
                 >
