@@ -142,7 +142,6 @@ routes.post(
   async (req, res) => {
     const { originalname: name, size, key, url = '' } = req.file;
     const user = await User.findOne({ _id: req.logged });
-
     try {
       const image = await Image.create({
         name,
