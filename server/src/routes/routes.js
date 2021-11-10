@@ -131,7 +131,7 @@ routes.delete('/deleteUser/:id', async (req, res) => {
 //  endpoints for images
 
 routes.get('/image', async (req, res) => {
-  const image = await Image.find().sort({ createdAt: 1 });
+  const image = await Image.find().sort({ createdAt: 1 }).populate('user');
   res.status(200).send(image);
 });
 
@@ -141,6 +141,7 @@ routes.post(
   multer(upload).single('file'),
   async (req, res) => {
     const { originalname: name, size, key, url = '' } = req.file;
+    const user = await User.findOne({ _id: req.logged });
 
     try {
       const image = await Image.create({
@@ -148,6 +149,7 @@ routes.post(
         size,
         key,
         url,
+        user,
       });
       res.status(201).send({
         image,

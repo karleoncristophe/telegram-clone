@@ -362,15 +362,17 @@ const EditProfile = ({ openEdit }) => {
   const [imageModal, setImageModal] = useState(true);
   const [image, setImage] = useState('');
   // eslint-disable-next-line
-  const [getImage, setGetImage] = useState('');
+  const [getImage, setGetImage] = useState([]);
   // eslint-disable-next-line
   const [state, setState] = useState({});
+
   const uploadImage = async e => {
     e.preventDefault();
     openEdit();
 
     const formData = new FormData();
     formData.append('file', image);
+
     try {
       const { data } = await api.post('postImage', formData);
       console.log(data);
@@ -436,19 +438,6 @@ const EditProfile = ({ openEdit }) => {
   }, [user]);
 
   useEffect(() => {
-    const getImage = async () => {
-      const { data } = await api.get('image');
-
-      console.log(data);
-      setGetImage(data);
-    };
-    getImage();
-    return () => {
-      setState({}); // update an unmounted component
-    };
-  }, []);
-
-  useEffect(() => {
     const fetchRepos = async () => {
       try {
         const { data } = await api.get('me');
@@ -480,7 +469,7 @@ const EditProfile = ({ openEdit }) => {
               <ChooseImageContent onSubmit={uploadImage}>
                 <Image
                   style={{
-                    background: `url()`,
+                    background: `url('https://static.remove.bg/remove-bg-web/f50bd6ad4990ff621deccea155ab762c39d8c77a/assets/start_remove-c851bdf8d3127a24e2d137a55b1b427378cd17385b01aec6e59d5d4b5f39d2ec.png')`,
                     backgroundSize: 'cover',
                   }}
                 >

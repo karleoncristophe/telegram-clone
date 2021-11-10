@@ -3,7 +3,6 @@ const cors = require('cors');
 const path = require('path');
 const Message = require('../src/models/Message');
 const socket = require('socket.io');
-const { connected } = require('process');
 const port = 4000;
 const app = express();
 const webMobile = 'http://192.168.0.107:3000';
@@ -30,17 +29,19 @@ const io = socket(server, {
   },
 });
 
-let online = 0;
-
 io.on('connection', async socket => {
-  online++;
   console.log(`User ${socket.id} connected.`);
-  console.log(`Users onlines ${online}`);
+
   const messages = await Message.find();
   socket.emit('messages', messages);
+
   socket.on('messages', async args => {
     await Message.create(args);
     const messages = await Message.find();
     socket.emit('messages', messages);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`User ${socket.id} disconnected.`);
   });
 });
