@@ -362,6 +362,8 @@ const EditProfile = ({ openEdit }) => {
   const [imageModal, setImageModal] = useState(true);
   const [image, setImage] = useState('');
   // eslint-disable-next-line
+  const [imageUrl, setImageUrl] = useState(null);
+  // eslint-disable-next-line
   const [state, setState] = useState({});
 
   const update = async () => {
@@ -369,30 +371,34 @@ const EditProfile = ({ openEdit }) => {
       name: name,
       bio: bio,
       username: userName,
+      imageUrl: imageUrl,
     };
 
     try {
       const { data } = await api.put(`users/${user._id}`, body);
       setUser(data);
-
       message.success('Usuário Atualizado.');
     } catch (error) {
       console.log(error);
     }
 
-    // openEdit();
     setVisible(false);
   };
 
   const uploadImage = async e => {
     e.preventDefault();
     openEdit();
-
+    setImage(e.target.files[0]);
     const formData = new FormData();
     formData.append('file', image);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImage(formData);
+    };
 
     try {
       const { data } = await api.post('postImage', formData);
+      update();
       console.log(data);
       message.success('Imagem enviada.');
     } catch (error) {
@@ -453,14 +459,14 @@ const EditProfile = ({ openEdit }) => {
               <ChooseImageContent onSubmit={uploadImage}>
                 <Image
                   style={{
-                    // background: `url(${user.imageUrl})`,
+                    background: `url("${image}")`,
                     backgroundSize: 'cover',
                   }}
                 >
                   <ChooseImageInput
                     type="file"
                     id="img"
-                    onChange={e => setImage(e.target.files[0])}
+                    onChange={uploadImage}
                   />
                   <ChooseImage htmlFor="img">
                     <Camera />
