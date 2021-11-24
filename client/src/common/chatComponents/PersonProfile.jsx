@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-// import { Modal, Button } from 'antd';
+import Cards from '../chatComponents/Cards';
 import { CloseOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 
 import ImgArroba from '../../assets/icons/arroba.png';
@@ -16,7 +15,7 @@ const Container = styled.div`
   background: #212121;
 
   @media (max-width: 1202px) {
-    width: ${props => (props.openProfileInformation ? '380px' : '0px')};
+    width: ${props => (props.openProfileInformation ? '424px' : '0px')};
     position: absolute;
     right: 0;
     top: 0;
@@ -152,70 +151,10 @@ const PersonNameAndBio = styled.span`
   line-height: 20px;
 `;
 
-const PersonDataContent = styled.footer`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  width: 100%;
-`;
-const PersonDataHead = styled.div`
-  width: 100%;
-  height: 56px;
-`;
-const PersonDataButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  height: 100%;
-  width: 100%;
-  border: none;
-
-  background: none;
-`;
-const PersonDataTitle = styled.span`
-  color: #6a52da;
-  font-size: 1rem;
-  font-weight: 600;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &:hover {
-    background: #383737;
-  }
-`;
-
-const PersonDataImageContent = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-`;
-
 const Space = styled.div`
   width: 100%;
-  height: 15px;
+  height: 10px;
   background: #181818;
-`;
-
-const MediaContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 139.33px;
-  height: 139.33px;
-  border: none;
-  background: none;
-`;
-
-const Card = styled.div`
-  background: red;
-  width: 100%;
-  height: 100%;
-
-  :hover {
-    background: #721a1a;
-  }
 `;
 
 const PersonProfile = ({
@@ -224,30 +163,6 @@ const PersonProfile = ({
   openChatMessage,
   data,
 }) => {
-  // const [visible, setVisible] = useState(false);
-  // eslint-disable-next-line
-  const [media, setMedia] = useState(true);
-  // eslint-disable-next-line
-  const [files, setFiles] = useState(false);
-  // eslint-disable-next-line
-  const [links, setLinks] = useState(false);
-  // eslint-disable-next-line
-  const [voice, setVoice] = useState(false);
-
-  const openMedia = () => {
-    setMedia(prev => !prev);
-  };
-  const openFiles = () => {
-    setFiles(prev => !prev);
-  };
-
-  const openLinks = () => {
-    setLinks(prev => !prev);
-  };
-
-  const openVoice = () => {
-    setVoice(prev => !prev);
-  };
   return (
     <Container
       openChatMessage={openChatMessage}
@@ -281,25 +196,7 @@ const PersonProfile = ({
             </PersonNameAndBioButon>
           </PersonAvatarContent>
           <Space />
-          <PersonDataContent>
-            <PersonDataHead>
-              <PersonDataButton>
-                <PersonDataTitle onClick={openMedia}>Media</PersonDataTitle>
-
-                <PersonDataTitle onClick={openFiles}>Files</PersonDataTitle>
-
-                <PersonDataTitle onClick={openLinks}>Links</PersonDataTitle>
-
-                <PersonDataTitle onClick={openVoice}>Voice</PersonDataTitle>
-              </PersonDataButton>
-            </PersonDataHead>
-
-            <PersonDataImageContent>
-              <MediaContent>
-                <Card>Media</Card>
-              </MediaContent>
-            </PersonDataImageContent>
-          </PersonDataContent>
+          <Cards />
         </ProfileContent>
       </ContainerScroll>
     </Container>
