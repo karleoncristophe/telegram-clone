@@ -7,6 +7,7 @@ import { Menu, Dropdown } from 'antd';
 
 import UserImage from '../../../assets/icons/user.png';
 
+import api from '../../../services/api';
 const Container = styled.div`
   display: flex;
   position: relative;
@@ -24,7 +25,7 @@ const MessageContainer = styled.main`
   justify-content: center;
   position: relative;
   right: 17px;
-
+  cursor: pointer;
   margin-top: 2px;
   border-radius: 12px 12px 12px 0px;
   max-height: 2196px;
@@ -148,16 +149,28 @@ const Messages = ({
   data,
   openSearch,
   openProfile,
-  remove,
+  setMessages,
 }) => {
   const isDay = dayjs(data.createdAt).isBefore(
     dayjs(dayjs().format('YYYY-MM-DD'))
   );
 
+  const removeMessages = async (id, e) => {
+    try {
+      // eslint-disable-next-line
+      const { deleteItem } = await api.delete(`/deleteMessage/${id}`);
+      const { data } = await api.get('messages');
+      setMessages(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteMessage = (
     <DeleteMessageContent>
       <DeleteMessageButton
-        onClick={remove}
+        key="0"
+        onClick={e => removeMessages(data._id, e)}
         icon={<RestOutlined style={{ fontSize: '18px' }} />}
       >
         Delete Message

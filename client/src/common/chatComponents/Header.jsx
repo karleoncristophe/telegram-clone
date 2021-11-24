@@ -155,6 +155,7 @@ const LeftArowButton = styled.button`
   border: none;
   width: 40px;
   height: 40px;
+  margin-right: 10px;
   color: #8a8787;
   background: none;
   margin-left: 5px;
@@ -254,6 +255,7 @@ const Header = ({
           overlay={deleteChat}
           placement="bottomRight"
           overlayStyle={{ background: 'none' }}
+          trigger={['click']}
         >
           <MoreOptions>
             <ImageMenu />

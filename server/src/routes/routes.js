@@ -23,6 +23,22 @@ routes.post('/messages', async (req, res) => {
   res.status(200).send(message);
 });
 
+routes.delete('/deleteMessage/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const message = await Message.findById({ _id: id });
+
+    await message.remove();
+
+    return res.status(200).send({ message: 'Deleted message.' });
+  } catch (error) {
+    res.status(400).send({
+      error: ' Message was not deleted successfully!',
+    });
+  }
+});
+
 //  endpoints for users
 routes.get('/users', async (req, res) => {
   const name = await User.find().sort({ createdAt: 1 });

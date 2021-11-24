@@ -217,7 +217,7 @@ const ChatMenu = ({
   const menu = (
     <MenuOptions>
       <MenuItem
-        key="1"
+        key="0"
         icon={
           <CarryOutOutlined
             style={{
@@ -230,7 +230,7 @@ const ChatMenu = ({
         Salved Messages
       </MenuItem>
       <MenuItem
-        key="2"
+        key="1"
         icon={
           <UserOutlined style={{ fontSize: '23px', paddingRight: '20px' }} />
         }
@@ -238,7 +238,7 @@ const ChatMenu = ({
         Contacts
       </MenuItem>
       <MenuItem
-        key="3"
+        key="2"
         icon={
           <SettingOutlined style={{ fontSize: '23px', paddingRight: '20px' }} />
         }

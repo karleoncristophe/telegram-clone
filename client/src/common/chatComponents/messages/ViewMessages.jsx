@@ -389,6 +389,7 @@ const ViewMessages = ({
                 personName={dataInformatios.name}
                 openProfile={openProfile}
                 openSearch={openSearch}
+                setMessages={setMessages}
               />
             ))}
           </ViewMessage>
