@@ -298,10 +298,6 @@ const ViewMessages = ({
     setChosenEmoji(emojiObject);
   };
 
-  const clearInput = () => {
-    setSendMessage('');
-  };
-
   const openEmoji = (
     <PickContent>
       {chosenEmoji ? (
@@ -328,10 +324,11 @@ const ViewMessages = ({
       userTo: personName,
       id: Date.now(),
     };
-    setMessages([...messages, newMessage]);
-
-    socket.emit('messages', newMessage);
-    clearInput();
+    await socket.emit('messages', newMessage);
+    await setMessages([...messages, newMessage]);
+    const { data } = await api.get('messages');
+    setMessages(data);
+    setSendMessage('');
   };
 
   // const remove = () => {
